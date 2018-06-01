@@ -1,6 +1,6 @@
 <?php
 /**
- * The Template for displaying Archive pages.
+ * The Template used to display Tag Archive pages
  */
 
 	get_header();
@@ -9,17 +9,11 @@
 	<?php if ( have_posts() ) : ?>
 
 		<header class="page-header">
-			<h1 class="page-title">
-				<?php if ( is_day() ) : ?>
-					<?php printf( __( 'Daily Archives: %s', 'dhhc' ), '<span>' . get_the_date() . '</span>' ); ?>
-				<?php elseif ( is_month() ) : ?>
-					<?php printf( __( 'Monthly Archives: %s', 'dhhc' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'dhhc' ) ) . '</span>' ); ?>
-				<?php elseif ( is_year() ) : ?>
-					<?php printf( __( 'Yearly Archives: %s', 'dhhc' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'dhhc' ) ) . '</span>' ); ?>
-				<?php else : ?>
-					<?php _e( 'Blog Archives', 'dhhc' ); ?>
-				<?php endif; ?>
-			</h1>
+			<h1 class="page-title"><?php printf( __( 'Tag: %s', 'dhhc' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+			<?php
+				$tag_description = tag_description();
+				if ( ! empty( $tag_description ) ) echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
+			?>
 		</header>
 
 		<?php dhhc_content_nav( 'nav-above' ); ?>

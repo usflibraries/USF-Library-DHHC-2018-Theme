@@ -1,612 +1,529 @@
 <?php
-/**
- * Twenty Seventeen functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- */
 
-/**
- * Twenty Seventeen only works in WordPress 4.7 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
-	require get_template_directory() . '/inc/back-compat.php';
-	return;
-}
-
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
-function twentyseventeen_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyseventeen
-	 * If you're building a theme based on Twenty Seventeen, use a find and replace
-	 * to change 'twentyseventeen' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'twentyseventeen' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
-	add_theme_support( 'post-thumbnails' );
-
-	add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
-
-	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
-
-	// Set the default content width.
-	$GLOBALS['content_width'] = 525;
-
-	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus(
-		array(
-			'top'    => __( 'Top Menu', 'twentyseventeen' ),
-			'social' => __( 'Social Links Menu', 'twentyseventeen' ),
-		)
-	);
-
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support(
-		'html5', array(
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		)
-	);
-
-	/*
-	 * Enable support for Post Formats.
-	 *
-	 * See: https://codex.wordpress.org/Post_Formats
-	 */
-	add_theme_support(
-		'post-formats', array(
-			'aside',
-			'image',
-			'video',
-			'quote',
-			'link',
-			'gallery',
-			'audio',
-		)
-	);
-
-	// Add theme support for Custom Logo.
-	add_theme_support(
-		'custom-logo', array(
-			'width'      => 250,
-			'height'     => 250,
-			'flex-width' => true,
-		)
-	);
-
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/*
-	 * This theme styles the visual editor to resemble the theme style,
-	 * specifically font, colors, and column width.
-	  */
-	add_editor_style( array( 'assets/css/editor-style.css', twentyseventeen_fonts_url() ) );
-
-	// Define and register starter content to showcase the theme on new sites.
-	$starter_content = array(
-		'widgets'     => array(
-			// Place three core-defined widgets in the sidebar area.
-			'sidebar-1' => array(
-				'text_business_info',
-				'search',
-				'text_about',
-			),
-
-			// Add the core-defined business info widget to the footer 1 area.
-			'sidebar-2' => array(
-				'text_business_info',
-			),
-
-			// Put two core-defined widgets in the footer 2 area.
-			'sidebar-3' => array(
-				'text_about',
-				'search',
-			),
-		),
-
-		// Specify the core-defined pages to create and add custom thumbnails to some of them.
-		'posts'       => array(
-			'home',
-			'about'            => array(
-				'thumbnail' => '{{image-sandwich}}',
-			),
-			'contact'          => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-			'blog'             => array(
-				'thumbnail' => '{{image-coffee}}',
-			),
-			'homepage-section' => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-		),
-
-		// Create the custom image attachments used as post thumbnails for pages.
-		'attachments' => array(
-			'image-espresso' => array(
-				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
-				'file'       => 'assets/images/espresso.jpg', // URL relative to the template directory.
-			),
-			'image-sandwich' => array(
-				'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
-				'file'       => 'assets/images/sandwich.jpg',
-			),
-			'image-coffee'   => array(
-				'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
-				'file'       => 'assets/images/coffee.jpg',
-			),
-		),
-
-		// Default to a static front page and assign the front and posts pages.
-		'options'     => array(
-			'show_on_front'  => 'page',
-			'page_on_front'  => '{{home}}',
-			'page_for_posts' => '{{blog}}',
-		),
-
-		// Set the front page section theme mods to the IDs of the core-registered pages.
-		'theme_mods'  => array(
-			'panel_1' => '{{homepage-section}}',
-			'panel_2' => '{{about}}',
-			'panel_3' => '{{blog}}',
-			'panel_4' => '{{contact}}',
-		),
-
-		// Set up nav menus for each of the two areas registered in the theme.
-		'nav_menus'   => array(
-			// Assign a menu to the "top" location.
-			'top'    => array(
-				'name'  => __( 'Top Menu', 'twentyseventeen' ),
-				'items' => array(
-					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
-					'page_about',
-					'page_blog',
-					'page_contact',
-				),
-			),
-
-			// Assign a menu to the "social" location.
-			'social' => array(
-				'name'  => __( 'Social Links Menu', 'twentyseventeen' ),
-				'items' => array(
-					'link_yelp',
-					'link_facebook',
-					'link_twitter',
-					'link_instagram',
-					'link_email',
-				),
-			),
-		),
-	);
+$theme_version = '1.0';
 
 	/**
-	 * Filters Twenty Seventeen array of starter content.
+	 * Include Theme Customizer
 	 *
-	 * @since Twenty Seventeen 1.1
-	 *
-	 * @param array $starter_content Array of starter content.
+	 * @since v1.0
 	 */
-	$starter_content = apply_filters( 'twentyseventeen_starter_content', $starter_content );
+	$theme_customizer = get_template_directory() . '/inc/customizer.php';
+	if ( is_readable( $theme_customizer ) ) {
+		require_once( $theme_customizer );
+	}
 
-	add_theme_support( 'starter-content', $starter_content );
-}
-add_action( 'after_setup_theme', 'twentyseventeen_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function twentyseventeen_content_width() {
+	/**
+	 * Include Meta Boxes to Page-Edit: class/style
+	 *
+	 * @since v1.0
+	 */
+	$theme_metaboxes = get_template_directory() . '/inc/metaboxes.php';
+	if ( is_readable( $theme_metaboxes ) ) {
+		require_once( $theme_metaboxes );
+	}
 
-	$content_width = $GLOBALS['content_width'];
 
-	// Get layout.
-	$page_layout = get_theme_mod( 'page_layout' );
+	/**
+	 * Include Support for wordpress.com-specific functions.
+	 *
+	 * @since v1.0
+	 */
+	$theme_wordpresscom = get_template_directory() . '/inc/wordpresscom.php';
+	if ( is_readable( $theme_wordpresscom ) ) {
+		require_once( $theme_wordpresscom );
+	}
 
-	// Check if layout is one column.
-	if ( 'one-column' === $page_layout ) {
-		if ( twentyseventeen_is_frontpage() ) {
-			$content_width = 644;
-		} elseif ( is_page() ) {
-			$content_width = 740;
+
+	/**
+	 * Set the content width based on the theme's design and stylesheet
+	 *
+	 * @since v1.0
+	 */
+	if ( ! isset( $content_width ) ) {
+		$content_width = 800;
+	}
+
+
+	/**
+	 * General Theme Settings
+	 *
+	 * @since v1.0
+	 */
+	if ( ! function_exists( 'dhhc_setup_theme' ) ) :
+		function dhhc_setup_theme() {
+
+			// Make theme available for translation: Translations can be filed in the /languages/ directory
+			load_theme_textdomain( 'dhhc', get_template_directory() . '/languages' );
+
+			// Theme Support
+			add_theme_support( 'title-tag' );
+			add_theme_support( 'automatic-feed-links' );
+			add_theme_support( 'post-thumbnails' );
+			add_theme_support( 'html5', array(
+				'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+			) );
+
+			// Date/Time Format
+			$theme_dateformat = get_option( 'date_format' );
+			$theme_timeformat = 'H:i';
+
+			// Default Attachment Display Settings
+			update_option( 'image_default_align', 'none' );
+			update_option( 'image_default_link_type', 'none' );
+			update_option( 'image_default_size', 'large' );
+
+			// Custom CSS-Styles of Wordpress Gallery
+			add_filter( 'use_default_gallery_style', '__return_false' );
+
+		}
+		add_action( 'after_setup_theme', 'dhhc_setup_theme' );
+	endif;
+
+
+	/**
+	 * Add title tag if < 4.1: https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1
+	 *
+	 * @since v1.0
+	 */
+	if ( ! function_exists( '_wp_render_title_tag' ) ) :
+		function dhhc_render_title() {
+		?>
+			<title><?php wp_title( '|', true, 'right' ); ?></title>
+		<?php
+		}
+		add_action( 'wp_head', 'dhhc_render_title' );
+	endif;
+
+
+	/**
+	 * Add new User fields to Userprofile
+	 *
+	 * @since v1.0
+	 */
+	if ( ! function_exists( 'dhhc_add_user_fields' ) ) :
+		function dhhc_add_user_fields( $fields ) {
+			// Add new fields
+			$fields['facebook_profile'] = 'Facebook URL';
+			$fields['twitter_profile'] = 'Twitter URL';
+			$fields['google_profile'] = 'Google+ URL';
+			$fields['linkedin_profile'] = 'LinkedIn URL';
+			$fields['xing_profile'] = 'Xing URL';
+			$fields['github_profile'] = 'GitHub URL';
+
+			return $fields;
+		}
+		add_filter( 'user_contactmethods', 'dhhc_add_user_fields' ); // get_user_meta( $user->ID, 'facebook_profile', true );
+	endif;
+
+
+	/**
+	 * Test if a page is a blog page
+	 * if ( is_blog() ) { ... }
+	 *
+	 * @since v1.0
+	 */
+	function is_blog() {
+		global $post;
+		$posttype = get_post_type( $post );
+		return ( ((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_tag())) && ( 'post' === $posttype ) ) ? true : false ;
+	}
+
+
+	/**
+	 * Get the page number
+	 *
+	 * @since v1.0
+	 */
+	function get_page_number() {
+		if ( get_query_var( 'paged' ) ) {
+			print ' | ' . __( 'Page ' , 'dhhc') . get_query_var( 'paged' );
 		}
 	}
 
-	// Check if is single post and there is no sidebar.
-	if ( is_single() && ! is_active_sidebar( 'sidebar-1' ) ) {
-		$content_width = 740;
-	}
 
 	/**
-	 * Filter Twenty Seventeen content width of the theme.
+	 * Disable comments for Media (Image-Post, Jetpack-Carousel, etc.)
 	 *
-	 * @since Twenty Seventeen 1.0
+	 * @since v1.0
+	 */
+	function dhhc_filter_media_comment_status( $open, $post_id ) {
+		$media_post = get_post( $post_id );
+		if ( 'attachment' === $media_post->post_type ) {
+			return false;
+		}
+		return $open;
+	}
+	add_filter( 'comments_open', 'dhhc_filter_media_comment_status', 10 , 2 );
+
+
+	/**
+	 * Style Edit buttons as badges: http://getbootstrap.com/components/#badges
 	 *
-	 * @param int $content_width Content width in pixels.
+	 * @since v1.0
 	 */
-	$GLOBALS['content_width'] = apply_filters( 'twentyseventeen_content_width', $content_width );
-}
-add_action( 'template_redirect', 'twentyseventeen_content_width', 0 );
+	function dhhc_custom_edit_post_link( $output ) {
+		$output = str_replace( 'class="post-edit-link"', 'class="post-edit-link badge badge-info"', $output );
+		return $output;
+	}
+	add_filter( 'edit_post_link', 'dhhc_custom_edit_post_link' );
 
-/**
- * Register custom fonts.
- */
-function twentyseventeen_fonts_url() {
-	$fonts_url = '';
 
-	/*
-	 * Translators: If there are characters in your language that are not
-	 * supported by Libre Franklin, translate this to 'off'. Do not translate
-	 * into your own language.
+	/**
+	 * Responsive oEmbed filter: http://getbootstrap.com/components/#responsive-embed
+	 *
+	 * @since v1.0
 	 */
-	$libre_franklin = _x( 'on', 'Libre Franklin font: on or off', 'twentyseventeen' );
-
-	if ( 'off' !== $libre_franklin ) {
-		$font_families = array();
-
-		$font_families[] = 'Libre Franklin:300,300i,400,400i,600,600i,800,800i';
-
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-		);
-
-		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	function dhhc_oembed_filter( $html, $url, $attr, $post_id ) {
+		$return = '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+		return $return;
 	}
+	add_filter( 'embed_oembed_html', 'dhhc_oembed_filter', 10, 4 );
 
-	return esc_url_raw( $fonts_url );
-}
 
-/**
- * Add preconnect for Google Fonts.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param array  $urls           URLs to print for resource hints.
- * @param string $relation_type  The relation type the URLs are printed.
- * @return array $urls           URLs to print for resource hints.
- */
-function twentyseventeen_resource_hints( $urls, $relation_type ) {
-	if ( wp_style_is( 'twentyseventeen-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
-		$urls[] = array(
-			'href' => 'https://fonts.gstatic.com',
-			'crossorigin',
-		);
+	if ( ! function_exists( 'dhhc_content_nav' ) ) :
+		/**
+		 * Display a navigation to next/previous pages when applicable: http://getbootstrap.com/components/#pagination-pager
+		 *
+		 * @since v1.0
+		 */
+		function dhhc_content_nav( $nav_id ) {
+			global $wp_query;
+
+			if ( $wp_query->max_num_pages > 1 ) : ?>
+				<nav id="<?php echo $nav_id; ?>" class="blog-nav mdl-cell mdl-cell--12-col">
+					<?php next_posts_link( '<button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_back</i></button> ' . __( 'Older posts', 'dhhc' ) ); ?>
+					<div class="mdl-layout-spacer"></div>
+					<?php previous_posts_link( __( 'Newer posts', 'dhhc' ) . ' <button class="mdl-button mdl-js-button mdl-button--icon mdl-color--pink-500 mdl-color-text--white"><i class="material-icons">arrow_forward</i></button>' ); ?>
+				</nav><!-- /.blog-nav -->
+			<?php
+			endif;
+		}
+
+		// Add Class
+		/**
+		function posts_link_attributes() {
+			return 'class=""';
+		}
+		add_filter('next_posts_link_attributes', 'posts_link_attributes');
+		add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+		*/
+
+	endif; // content navigation
+
+
+	/**
+	 * Init Widget areas in Sidebar
+	 *
+	 * @since v1.0
+	 */
+	function dhhc_widgets_init() {
+		// Area 1
+		register_sidebar( array(
+			'name' => 'Primary Widget Area (Sidebar)',
+			'id' => 'primary_widget_area',
+			'before_widget' => '',
+			'after_widget' => '',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		) );
+
+		// Area 2
+		register_sidebar( array(
+			'name' => 'Secondary Widget Area (Footer)',
+			'id' => 'secondary_widget_area',
+			'before_widget' => '<div class="mdl-mega-footer__drop-down-section mdl-mega-footer__link-list">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title mdl-mega-footer__heading">',
+			'after_title' => '</h3>',
+		) );
 	}
+	add_action( 'widgets_init', 'dhhc_widgets_init' );
 
-	return $urls;
-}
-add_filter( 'wp_resource_hints', 'twentyseventeen_resource_hints', 10, 2 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function twentyseventeen_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => __( 'Blog Sidebar', 'twentyseventeen' ),
-			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your sidebar on blog posts and archive pages.', 'twentyseventeen' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
+	$preset_widgets = array(
+		'primary_widget_area' => array( 'search', 'pages', 'categories', 'archives' ),
+		'secondary_widget_area' => array( 'links', 'meta' ),
+		'third_widget_area' => array( 'links', 'meta' ),
 	);
+	if ( isset( $_GET['activated'] ) ) {
+		update_option( 'sidebars_widgets', $preset_widgets );
+	}
+	// update_option( 'sidebars_widgets', NULL );
 
-	register_sidebar(
-		array(
-			'name'          => __( 'Footer 1', 'twentyseventeen' ),
-			'id'            => 'sidebar-2',
-			'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+	// Check for static widgets in widget-ready areas
+	function is_sidebar_active( $index ) {
+		global $wp_registered_sidebars;
 
-	register_sidebar(
-		array(
-			'name'          => __( 'Footer 2', 'twentyseventeen' ),
-			'id'            => 'sidebar-3',
-			'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'twentyseventeen_widgets_init' );
+		$widgetcolums = wp_get_sidebars_widgets();
 
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and
- * a 'Continue reading' link.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $link Link to single post/page.
- * @return string 'Continue reading' link prepended with an ellipsis.
- */
-function twentyseventeen_excerpt_more( $link ) {
-	if ( is_admin() ) {
-		return $link;
+		if ( $widgetcolums[$index] ) {
+			return true;
+		}
+
+		return false;
 	}
 
-	$link = sprintf(
-		'<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ), get_the_title( get_the_ID() ) )
-	);
-	return ' &hellip; ' . $link;
-}
-add_filter( 'excerpt_more', 'twentyseventeen_excerpt_more' );
 
-/**
- * Handles JavaScript detection.
- *
- * Adds a `js` class to the root `<html>` element when JavaScript is detected.
- *
- * @since Twenty Seventeen 1.0
- */
-function twentyseventeen_javascript_detection() {
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
-}
-add_action( 'wp_head', 'twentyseventeen_javascript_detection', 0 );
+	if ( ! function_exists( 'dhhc_article_posted_on' ) ) :
+		/**
+		 * "Theme posted on" pattern
+		 *
+		 * @since v1.0
+		 */
+		function dhhc_article_posted_on() {
+			global $theme_dateformat, $theme_timeformat;
 
-/**
- * Add a pingback url auto-discovery header for singularly identifiable articles.
- */
-function twentyseventeen_pingback_header() {
-	if ( is_singular() && pings_open() ) {
-		printf( '<link rel="pingback" href="%s">' . "\n", get_bloginfo( 'pingback_url' ) );
+			printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'dhhc' ),
+				esc_url( get_the_permalink() ),
+				esc_attr( get_the_date( $theme_dateformat ) . ' - ' . get_the_time( $theme_timeformat ) ),
+				esc_attr( get_the_date( 'c' ) ),
+				esc_html( get_the_date( $theme_dateformat ) . ' - ' . get_the_time( $theme_timeformat ) ),
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				esc_attr( sprintf( __( 'View all posts by %s', 'dhhc' ), get_the_author() ) ),
+				get_the_author()
+			);
+
+		}
+	endif;
+
+
+	/**
+	 * Template for Password protected post form
+	 *
+	 * @since v1.0
+	 */
+	function dhhc_password_form() {
+		global $post;
+		$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
+
+		$output = '<div class="mdl-grid">';
+			$output .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
+			$output .= '<h4 class="mdl-cell mdl-cell--12-col">' . __( 'This content is password protected. To view it please enter your password below.', 'dhhc' ) . '</h4>';
+				$output .= '<div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--12-col-phone">';
+					$output .= '<div class="mdl-textfield mdl-js-textfield">';
+						$output .= '<input name="post_password" id="' . $label . '" type="password" placeholder="' . __( 'Password', 'dhhc' ) . '" class="mdl-textfield__input" />';
+						$output .= '<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised" value="' . esc_attr( __( 'Submit', 'dhhc' ) ) . '" />';
+					$output .= '</div><!-- /.input-group -->';
+				$output .= '</div><!-- /.mdl-cell -->';
+			$output .= '</form>';
+		$output .= '</div><!-- /.mdl-grid -->';
+		return $output;
 	}
-}
-add_action( 'wp_head', 'twentyseventeen_pingback_header' );
+	add_filter( 'the_password_form', 'dhhc_password_form' );
 
-/**
- * Display custom color CSS.
- */
-function twentyseventeen_colors_css_wrap() {
-	if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
-		return;
+
+	if ( ! function_exists( 'dhhc_comment' ) ) :
+
+		/**
+		 * Style Reply link
+		 *
+		 * @since v1.0
+		 */
+		function dhhc_replace_reply_link_class( $class ) {
+			$class = str_replace( "class='comment-reply-link", "class='mdl-button mdl-js-button mdl-button--raised", $class );
+			return $class;
+		}
+		add_filter( 'comment_reply_link', 'dhhc_replace_reply_link_class' );
+
+		/**
+		 * Template for comments and pingbacks:
+		 * add function to comments.php ... wp_list_comments( array( 'callback' => 'dhhc_comment' ) );
+		 *
+		 * @since v1.0
+		 */
+		function dhhc_comment( $comment, $args, $depth ) {
+			global $theme_dateformat, $theme_timeformat;
+
+			$GLOBALS['comment'] = $comment;
+			switch ( $comment->comment_type ) :
+				case 'pingback' :
+				case 'trackback' :
+			?>
+			<li class="post pingback">
+				<p><?php _e( 'Pingback:', 'dhhc' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' ); ?></p>
+			<?php
+					break;
+				default :
+			?>
+			<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+				<article id="comment-<?php comment_ID(); ?>" class="comment">
+					<footer class="comment-meta">
+						<div class="comment-author vcard">
+							<?php
+								$avatar_size = 136;
+								if ( '0' !== $comment->comment_parent ) {
+									$avatar_size = 68;
+								}
+								echo get_avatar( $comment, $avatar_size );
+								
+								/* translators: 1: comment author, 2: date and time */
+								printf( __( '%1$s, %2$s', 'dhhc' ),
+									sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
+									sprintf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+										esc_url( get_comment_link( $comment->comment_ID ) ),
+										get_comment_time( 'c' ),
+										/* translators: 1: date, 2: time */
+										//sprintf( __( '%1$s - %2$s', 'dhhc' ), get_comment_time( $theme_dateformat ), get_comment_time( $theme_timeformat ) )
+										sprintf( __( '%1$s ago', 'dhhc' ), human_time_diff( get_comment_time('U'), current_time('timestamp') ) )
+									)
+								);
+							?>
+
+							<?php edit_comment_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' ); ?>
+						</div><!-- .comment-author .vcard -->
+
+						<?php if ( '0' === $comment->comment_approved ) : ?>
+							<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'dhhc' ); ?></em>
+							<br />
+						<?php endif; ?>
+
+					</footer>
+
+					<div class="comment-content"><?php comment_text(); ?></div>
+
+					<div class="reply">
+						<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'dhhc' ) . ' <i class="material-icons">reply</i>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+					</div><!-- .reply -->
+				</article><!-- #comment-## -->
+
+			<?php
+					break;
+			endswitch;
+
+		}
+
+		/**
+		 * Custom Comment form
+		 *
+		 * @since v1.0
+		 *
+		 * @since v1.1: 'submit_button' and 'submit_field'
+		 */
+		function dhhc_custom_commentform( $args = array(), $post_id = null ) {
+			if ( null === $post_id ) {
+				$post_id = get_the_ID();
+			}
+
+			$commenter = wp_get_current_commenter();
+			$user = wp_get_current_user();
+			$user_identity = $user->exists() ? $user->display_name : '';
+
+			$args = wp_parse_args( $args );
+
+			$req = get_option( 'require_name_email' );
+			$aria_req = ( $req ? " aria-required='true' required" : '' );
+			$fields = array(
+				'author' => '<p class="mdl-textfield mdl-js-textfield">' .
+							'<input id="author" name="author" class="mdl-textfield__input" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' />' .
+							'<label class="mdl-textfield__label" for="author">' . __( 'Name', 'dhhc' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+				'email'  => '<p class="mdl-textfield mdl-js-textfield">' .
+							'<input id="email" name="email" class="mdl-textfield__input" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' />' .
+							'<label class="mdl-textfield__label" for="email">' . __( 'Email', 'dhhc' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+				'url'    => '',
+			);
+
+			$fields = apply_filters( 'comment_form_default_fields', $fields );
+			$defaults = array(
+				'fields'               => $fields,
+				'comment_field'        => '<fieldset class="mdl-textfield mdl-js-textfield">' .
+														'<textarea id="comment" name="comment" class="mdl-textfield__input" rows="3" aria-required="true" required></textarea>' .
+														'<label class="mdl-textfield__label" for="comment">' . __( 'Comment', 'dhhc' ) . ( $req ? '*' : '' ) . '</label></fieldset>',
+				/** This filter is documented in wp-includes/link-template.php */
+				'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'dhhc' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+				/** This filter is documented in wp-includes/link-template.php */
+				'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'dhhc' ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+				'comment_notes_before' => '',
+				'comment_notes_after'  => '<p class="small comment-notes">' . __( 'Your Email address will not be published.', 'dhhc' ) . '</p>',
+				'id_form'              => 'commentform',
+				'id_submit'            => 'submit',
+				'class_submit'         => 'mdl-button mdl-js-button mdl-button--raised',
+				'name_submit'          => 'submit',
+				'title_reply'          => '',
+				'title_reply_to'       => __( 'Leave a Reply to %s', 'dhhc' ),
+				'cancel_reply_link'    => __( 'Cancel reply', 'dhhc' ),
+				'label_submit'         => __( 'Post Comment', 'dhhc' ),
+				'submit_button'        => '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />',
+				'submit_field'         => '<p class="form-submit">%1$s %2$s</p>',
+				'format'               => 'html5',
+			);
+
+			return $defaults;
+
+		}
+		add_filter( 'comment_form_defaults', 'dhhc_custom_commentform' );
+
+	endif;
+
+
+	/**
+	 * Nav menus
+	 *
+	 * @since v1.0
+	 */
+	if ( function_exists( 'register_nav_menus' ) ) {
+		register_nav_menus( array(
+			'main-menu' => 'Main Navigation Menu',
+			'footer-menu' => 'Footer Menu',
+		) );
 	}
 
-	require_once( get_parent_theme_file_path( '/inc/color-patterns.php' ) );
-	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
-
-	$customize_preview_data_hue = '';
-	if ( is_customize_preview() ) {
-		$customize_preview_data_hue = 'data-hue="' . $hue . '"';
+	// Custom Nav Walker: mdl_navwalker()
+	$custom_walker = get_template_directory() . '/inc/mdl_navwalker.php';
+	if ( is_readable( $custom_walker ) ) {
+		require_once( $custom_walker );
 	}
+
+
+	/**
+	 * Loading All CSS Stylesheets and Javascript Files
+	 *
+	 * @since v1.0
+	 */
+	function dhhc_scripts_loader() {
+		global $theme_version;
+
+		// 1. Styles
+		wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, $theme_version, 'all' );
+		wp_enqueue_style( 'robotofont', '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', false, $theme_version, 'all' );
+		wp_enqueue_style( 'materialiconsfont', '//fonts.googleapis.com/icon?family=Material+Icons', false, $theme_version, 'all' );
+		// wp_enqueue_style( 'materialdesign', get_template_directory_uri() . '/bower_components/material-design-lite/material.min.css', false, $theme_version, 'all' );
+		wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'rtl', get_template_directory_uri() . '/css/rtl.min.css', false, $theme_version, 'all' );
+		}
+
+		// 2. Scripts
+		wp_enqueue_script( 'materialjs', get_template_directory_uri() . '/bower_components/material-design-lite/material.min.js', false, $theme_version, true );
+		wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/js/main.min.js', array( 'jquery' ), $theme_version, true );
+
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+	}
+	add_action( 'wp_enqueue_scripts', 'dhhc_scripts_loader' );
+
+
+	/**
+	 * Compatibility shims for old IE versions
+	 *
+	 * @since v1.0
+	 */
+	function dhhc_add_ie_html5_shims() {
+		echo '
+			<!-- IE Compatibility shims -->
+			<!--[if lt IE 9]>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js""></script>
+			<![endif]-->
+			
+			<!--[if IE]>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/flexie/1.0.3/flexie.min.js"></script>
+			<![endif]-->
+			<!-- end shims -->
+			';
+	}
+	add_action( 'wp_footer', 'dhhc_add_ie_html5_shims', 1 );
+
 ?>
-	<style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
-		<?php echo twentyseventeen_custom_colors_css(); ?>
-	</style>
-<?php
-}
-add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
-
-/**
- * Enqueue scripts and styles.
- */
-function twentyseventeen_scripts() {
-	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
-
-	// Theme stylesheet.
-	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
-
-	// Load the dark colorscheme.
-	if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'twentyseventeen-style' ), '1.0' );
-	}
-
-	// Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
-	if ( is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'twentyseventeen-style' ), '1.0' );
-		wp_style_add_data( 'twentyseventeen-ie9', 'conditional', 'IE 9' );
-	}
-
-	// Load the Internet Explorer 8 specific stylesheet.
-	wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'twentyseventeen-style' ), '1.0' );
-	wp_style_add_data( 'twentyseventeen-ie8', 'conditional', 'lt IE 9' );
-
-	// Load the html5 shiv.
-	wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
-	wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
-
-	wp_enqueue_script( 'twentyseventeen-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
-
-	$twentyseventeen_l10n = array(
-		'quote' => twentyseventeen_get_svg( array( 'icon' => 'quote-right' ) ),
-	);
-
-	if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
-		$twentyseventeen_l10n['expand']   = __( 'Expand child menu', 'twentyseventeen' );
-		$twentyseventeen_l10n['collapse'] = __( 'Collapse child menu', 'twentyseventeen' );
-		$twentyseventeen_l10n['icon']     = twentyseventeen_get_svg(
-			array(
-				'icon'     => 'angle-down',
-				'fallback' => true,
-			)
-		);
-	}
-
-	wp_enqueue_script( 'twentyseventeen-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '1.0', true );
-
-	wp_enqueue_script( 'jquery-scrollto', get_theme_file_uri( '/assets/js/jquery.scrollTo.js' ), array( 'jquery' ), '2.1.2', true );
-
-	wp_localize_script( 'twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'twentyseventeen_scripts' );
-
-/**
- * Add custom image sizes attribute to enhance responsive image functionality
- * for content images.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $sizes A source size value for use in a 'sizes' attribute.
- * @param array  $size  Image size. Accepts an array of width and height
- *                      values in pixels (in that order).
- * @return string A source size value for use in a content image 'sizes' attribute.
- */
-function twentyseventeen_content_image_sizes_attr( $sizes, $size ) {
-	$width = $size[0];
-
-	if ( 740 <= $width ) {
-		$sizes = '(max-width: 706px) 89vw, (max-width: 767px) 82vw, 740px';
-	}
-
-	if ( is_active_sidebar( 'sidebar-1' ) || is_archive() || is_search() || is_home() || is_page() ) {
-		if ( ! ( is_page() && 'one-column' === get_theme_mod( 'page_options' ) ) && 767 <= $width ) {
-			$sizes = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
-		}
-	}
-
-	return $sizes;
-}
-add_filter( 'wp_calculate_image_sizes', 'twentyseventeen_content_image_sizes_attr', 10, 2 );
-
-/**
- * Filter the `sizes` value in the header image markup.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $html   The HTML image tag markup being filtered.
- * @param object $header The custom header object returned by 'get_custom_header()'.
- * @param array  $attr   Array of the attributes for the image tag.
- * @return string The filtered header image HTML.
- */
-function twentyseventeen_header_image_tag( $html, $header, $attr ) {
-	if ( isset( $attr['sizes'] ) ) {
-		$html = str_replace( $attr['sizes'], '100vw', $html );
-	}
-	return $html;
-}
-add_filter( 'get_header_image_tag', 'twentyseventeen_header_image_tag', 10, 3 );
-
-/**
- * Add custom image sizes attribute to enhance responsive image functionality
- * for post thumbnails.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param array $attr       Attributes for the image markup.
- * @param int   $attachment Image attachment ID.
- * @param array $size       Registered image size or flat array of height and width dimensions.
- * @return array The filtered attributes for the image markup.
- */
-function twentyseventeen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
-	if ( is_archive() || is_search() || is_home() ) {
-		$attr['sizes'] = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
-	} else {
-		$attr['sizes'] = '100vw';
-	}
-
-	return $attr;
-}
-add_filter( 'wp_get_attachment_image_attributes', 'twentyseventeen_post_thumbnail_sizes_attr', 10, 3 );
-
-/**
- * Use front-page.php when Front page displays is set to a static page.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $template front-page.php.
- *
- * @return string The template to be used: blank if is_home() is true (defaults to index.php), else $template.
- */
-function twentyseventeen_front_page_template( $template ) {
-	return is_home() ? '' : $template;
-}
-add_filter( 'frontpage_template', 'twentyseventeen_front_page_template' );
-
-/**
- * Modifies tag cloud widget arguments to display all tags in the same font size
- * and use list format for better accessibility.
- *
- * @since Twenty Seventeen 1.4
- *
- * @param array $args Arguments for tag cloud widget.
- * @return array The filtered arguments for tag cloud widget.
- */
-function twentyseventeen_widget_tag_cloud_args( $args ) {
-	$args['largest']  = 1;
-	$args['smallest'] = 1;
-	$args['unit']     = 'em';
-	$args['format']   = 'list';
-
-	return $args;
-}
-add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_parent_theme_file_path( '/inc/custom-header.php' );
-
-/**
- * Custom template tags for this theme.
- */
-require get_parent_theme_file_path( '/inc/template-tags.php' );
-
-/**
- * Additional features to allow styling of the templates.
- */
-require get_parent_theme_file_path( '/inc/template-functions.php' );
-
-/**
- * Customizer additions.
- */
-require get_parent_theme_file_path( '/inc/customizer.php' );
-
-/**
- * SVG icons functions and filters.
- */
-require get_parent_theme_file_path( '/inc/icon-functions.php' );

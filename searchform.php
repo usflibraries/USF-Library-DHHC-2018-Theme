@@ -1,21 +1,17 @@
 <?php
 /**
- * Template for displaying search forms in Twenty Seventeen
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ * The template for displaying search forms
  */
-
 ?>
-
-<?php $unique_id = esc_attr( uniqid( 'search-form-' ) ); ?>
-
-<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label for="<?php echo $unique_id; ?>">
-		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'twentyseventeen' ); ?></span>
-	</label>
-	<input type="search" id="<?php echo $unique_id; ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'twentyseventeen' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-	<button type="submit" class="search-submit"><?php echo twentyseventeen_get_svg( array( 'icon' => 'search' ) ); ?><span class="screen-reader-text"><?php echo _x( 'Search', 'submit button', 'twentyseventeen' ); ?></span></button>
+<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<!--label for="s" class="assistive-text"><?php _e( 'Search', 'dhhc' ); ?></label-->
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+		<label class="mdl-button mdl-js-button mdl-button--icon" for="s">
+			<i class="material-icons">search</i>
+		</label>
+		<div class="mdl-textfield__expandable-holder">
+			<input type="text" name="s" id="s" class="mdl-textfield__input" />
+			<label class="mdl-textfield__label" for="s"><?php _e( 'Search', 'dhhc' ); ?></label>
+		</div><!-- /.mdl-textfield__expandable-holder -->
+	</div><!-- /.mdl-textfield -->
 </form>

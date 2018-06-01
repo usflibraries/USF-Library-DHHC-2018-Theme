@@ -1,6 +1,6 @@
 <?php
 /**
- * The Template for displaying Archive pages.
+ * The Template for displaying Author pages.
  */
 
 	get_header();
@@ -8,21 +8,35 @@
 
 	<?php if ( have_posts() ) : ?>
 
+		<?php
+			/* Queue the first post, that way we know
+			* what author we're dealing with (if that is the case).
+			*
+			* We reset this later so we can run the loop
+			* properly with a call to rewind_posts().
+			*/
+			the_post();
+		?>
+
 		<header class="page-header">
-			<h1 class="page-title">
-				<?php if ( is_day() ) : ?>
-					<?php printf( __( 'Daily Archives: %s', 'dhhc' ), '<span>' . get_the_date() . '</span>' ); ?>
-				<?php elseif ( is_month() ) : ?>
-					<?php printf( __( 'Monthly Archives: %s', 'dhhc' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'dhhc' ) ) . '</span>' ); ?>
-				<?php elseif ( is_year() ) : ?>
-					<?php printf( __( 'Yearly Archives: %s', 'dhhc' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'dhhc' ) ) . '</span>' ); ?>
-				<?php else : ?>
-					<?php _e( 'Blog Archives', 'dhhc' ); ?>
-				<?php endif; ?>
+			<h1 class="page-title author">
+				<?php
+					printf( __( 'Author Archives: %s', 'dhhc' ), '<span class="vcard">' . get_the_author() . '</span>' );
+				?>
 			</h1>
 		</header>
 
+		<?php
+			/* Since we called the_post() above, we need to
+			* rewind the loop back to the beginning that way
+			* we can run the loop properly, in full.
+			*/
+			rewind_posts();
+		?>
+
 		<?php dhhc_content_nav( 'nav-above' ); ?>
+
+			<?php get_template_part( 'author', 'bio' ); ?>
 
 			<?php
 				/* Start the Loop */

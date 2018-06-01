@@ -1,67 +1,53 @@
 <?php
 /**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ * The Template for displaying Search Results pages.
  */
 
-get_header(); ?>
+	get_header();
+?>
 
-<div class="wrap">
+	<div class="mdl-cell mdl-cell--12-col">
 
-	<header class="page-header">
 		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-		<?php else : ?>
-			<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
-		<?php endif; ?>
-	</header><!-- .page-header -->
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'dhhc' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			</header>
+
+			<?php dhhc_content_nav( 'nav-above' ); ?>
+
+				<?php
+					/* Start the Loop */
+					while ( have_posts() ) :
+						the_post();
+
+						/* Include the Post-Format-specific template for the content.
+						* If you want to overload this in a child theme then include a file
+						* called content-___.php (where ___ is the Post Format name) and that will be used instead.
+						*/
+						get_template_part( 'content', 'index' );
+
+					endwhile;
+				?>
+
+			<?php dhhc_content_nav( 'nav-below' ); ?>
+
+		<?php else : ?>
+
+			<article id="post-0" class="post no-results not-found">
+				<header class="entry-header">
+					<h1 class="entry-title"><?php _e( 'Nothing Found', 'dhhc' ); ?></h1>
+				</header><!-- .entry-header -->
+
+				<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'dhhc' ); ?></p>
+				<?php get_search_form(); ?>
+			</article><!-- /#post-0 -->
 
 		<?php
-		if ( have_posts() ) :
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/post/content', 'excerpt' );
-
-			endwhile; // End of the loop.
-
-			the_posts_pagination(
-				array(
-					'prev_text'          => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-					'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-				)
-			);
-
-		else :
+			endif;
+			wp_reset_postdata(); // end of the loop.
 		?>
-
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>
-			<?php
-				get_search_form();
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
-
-<?php
-get_footer();
+		
+	</div><!-- /.mdl-cell -->
+	
+<?php get_footer(); ?>

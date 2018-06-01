@@ -1,47 +1,72 @@
 <?php
 /**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ * The Template for displaying all single posts.
  */
 
-get_header(); ?>
+	get_header();
+?>
+<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
+    
+    <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+    
+        <!-- Top row, always visible -->
 
-<div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+        <div class="mdl-layout__header-row z-depth-2 navbar-fixed">
+            
+            <nav class="mdl-navigation z-depth-0">
+                    <div class="topleft_nav">
+                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                    </div>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <div class="topright_nav hide-on-med-and-down">
+                    <?php
+                    /** Loading WordPress Custom Menu (theme_location) **/
+                    wp_nav_menu( array(
+                    'theme_location' => 'main-menu',
+                    'container'      => '',
+                    'items_wrap'     => '%3$s',
+                    'depth'          => 1,
+                    //'fallback_cb'    => 'mdl_navwalker::fallback',
+                    'walker'         => new mdl_navwalker(),
+                    ) );
+                    ?>
+                    </div>
+            </nav>
+            <div class="mdl-layout-spacer"></div>
+                
+                
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
+            </div><!-- /.mdl-layout__header-row (top) -->
+
+            <!-- Bottom row, not visible on scroll -->
+            <div class="mdl-layout__header-row mdl-layout__header-row--bottom">
+
+                <!-- Navigation -->
+        <div class="mdl-navigation__container">
+
+<div class="introtext text-white animate fadeInUp"><h1><?php echo the_title();?></h1></div>
+
+            </div><!-- /.mdl-layout__header-row (bottom) -->
+
+    </header><!-- /#header -->
+
+    <div id="main" class="mdl-layout__content container">
+
+			<section>
+		<?php
+			if ( have_posts() ) :
+				while ( have_posts() ) :
 				the_post();
-
-				get_template_part( 'template-parts/post/content', get_post_format() );
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-				the_post_navigation(
-					array(
-						'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'twentyseventeen' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous', 'twentyseventeen' ) . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper">' . twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>',
-						'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'twentyseventeen' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next', 'twentyseventeen' ) . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper">' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>',
-					)
-				);
-
-			endwhile; // End of the loop.
+			?>
+		<?php
+				get_template_part( 'content', 'single' );
 			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
+		<?php
+			endwhile;
+			endif;
+			wp_reset_postdata(); // end of the loop.
+		?>
+	<div class="post-socials"><a href=""><i class="fa fa-facebook"></i></a><a href=""><i class="fa fa-twitter"></i></a><a href=""><i class="fa fa-flickr"></i></a><a href=""><i class="fa fa-vimeo"></i></a><!--<a href=""><i class="fa fa-globe"></i></a>--><a href=""><img src="<?php echo site_url();?>/wp-content/themes/dhhc/gigapan1.svg"></a><a href=""><img src="<?php echo site_url();?>/wp-content/themes/dhhc/sketchfab1.svg"></a></div>
 
-<?php
-get_footer();
+<?php get_footer(); ?>
