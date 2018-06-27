@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
       <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="<?php echo site_url();?>/wp-content/themes/dhhc/css/materialize.min.css">
+  <link rel="stylesheet" href="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
-  <script src="<?php echo site_url();?>/wp-content/themes/dhhc/js/materialize.min.js"></script>
+  <script src="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/js/materialize.min.js"></script>
   <!-- Smooth Scrolling -->
-  <script src="<?php echo site_url();?>/wp-content/themes/dhhc/js/smoothscroll.js"></script>
-<link rel='stylesheet' href="<?php echo site_url();?>/wp-content/themes/dhhc/css/font-awesome.min.css"/>
+  <script src="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/js/smoothscroll.js"></script>
+<link rel='stylesheet' href="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/css/font-awesome.min.css"/>
 
-<link rel='stylesheet' id='materialiconsfont-css'  href='//fonts.googleapis.com/icon?family=Material+Icons&#038;ver=1.0' type='text/css' media='all' />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel='stylesheet' src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 <?php wp_head(); ?>
 </head>
@@ -30,4 +30,24 @@ $(document).ready(function(){
   $(".button-collapse").sideNav();
 });
 </script>
-<body <?php body_class(); ?>>
+<script>
+// CAROUSEL
+$(document).ready(function(){
+  $('.carousel').carousel(
+  {
+    dist: 0,
+    padding: 0,
+    fullWidth: true,
+    indicators: true,
+    duration: 100,
+  }
+  );
+});
+
+autoplay()   
+function autoplay() {
+    $('.carousel').carousel('next');
+    setTimeout(autoplay, 4500);
+}
+</script>
+<body <?php body_class(); ?>

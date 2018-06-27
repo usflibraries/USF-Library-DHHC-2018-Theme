@@ -273,9 +273,8 @@ section {
 }
 
 .row {
-	padding: 1vh 0;
+    padding: 1vh 0;
 }
-
 .brand-logo {
 	/* margin: 0 0 0 14px; */
 	/* padding-left: 5px; */
@@ -384,9 +383,7 @@ header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 		color:#67d2ac!important;
 	}
 	#main iframe {
-		background-color:#ffffff;
 		width:100%;
-		padding:3vh;
 	}
 	.mdl-layout .mdl-navigation__container {
 		overflow: visible;
@@ -490,15 +487,8 @@ header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 		-o-transition: all .3s linear;
 		transition: all .3s linear;
 	}
-	.post-socials {
-		width:100%;
-		padding: 3vh 0;
-		text-align:center;
-	}
-	.post-socials a {font-size: 32px; margin:0 .2vw;padding: 15px;display: inline;width: 20px;border-radius: 50% 50%;height: 20px;}
-	.post-socials img {
-		width:26px;
-	}
+	
+	
 	.bio img {
 		margin-top:3vh;
 	}
@@ -523,9 +513,16 @@ header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 	.fa-globe {
 		color:#006948
 	}
-	.home-projects .col {
-		height:380px;
+	.home-projects {
+		background: auto;
 	}
+
+    .home-projects h2 {
+    	color: white;
+    }
+    .home-projects p {
+    	color: white;
+    }
 	@media (max-width: 992px){
 		.project-box-title {
 			display:none;
@@ -550,3 +547,62 @@ header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 			transform: none;
 		}
 	}
+	.slider-box {
+    padding: 0px 25px 25px 25px;
+    margin-left: 93px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 350px;
+    background:#00000082;
+    text-align: left;
+}
+.infobox {
+    padding: 1.4rem;
+    background:#00000082;
+    margin: 2.4rem;
+}
+.home {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.wrapper {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.column > div {
+    font-size: 4vh;
+    color: white;
+    background: royalblue;
+    margin: .1em;
+    padding: 0.8em 2.5em;
+    border-radius: 2px;
+    flex: 1;
+}
+
+.carousel.carousel-slider {
+    top: 0;
+    left: 0;
+    width: 30%;
+    margin-left: 20px;
+}
+.carousel .indicators .indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 5px;
+    width: 105px;
+    margin: 24px 4px;
+    background-color: rgba(255,255,255,0.5);
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 0%;
+}
+.colorbox{
+	background: #131313a6;
+}
