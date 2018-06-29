@@ -50,13 +50,13 @@
             <div class="mdl-layout__header-row mdl-layout__header-row--bottom">
 
                 <!-- Navigation -->
-        <div class="mdl-navigation__container">
+        <div class="container">
             <div class="row center">
-<div class="col m1"></div>
+<div class="col m1 hide-on-small-only"></div>
 <div class="col s12 m10">
 <div class="introtext text-white animate fadeInUp"><h1><?php echo the_title();?></h1></div>
 </div>
-<div class="col m1"></div></div>
+<div class="col m1 hide-on-small-only"></div></div>
         </div>
             </div><!-- /.mdl-layout__header-row (bottom) -->
 
