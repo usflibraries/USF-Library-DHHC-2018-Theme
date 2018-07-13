@@ -42,7 +42,7 @@
             <div class="mdl-layout__header-row mdl-layout__header-row--bottom">
 
                 <!-- Navigation -->
-        <div class="mdl-navigation__container">
+        <div class="container">
 
 <div class="introtext text-white animate fadeInUp"><h1><?php echo the_title();?></h1></div>
 
@@ -50,7 +50,7 @@
 
     </header><!-- /#header -->
 
-    <div id="main" class="mdl-layout__content container">
+    <div id="main" class="container">
 
 			<section>
 		<?php
@@ -67,6 +67,6 @@
 			endif;
 			wp_reset_postdata(); // end of the loop.
 		?>
-	<div class="post-socials"><a href=""><i class="fa fa-facebook"></i></a><a href=""><i class="fa fa-twitter"></i></a><a href=""><i class="fa fa-flickr"></i></a><a href=""><i class="fa fa-vimeo"></i></a><!--<a href=""><i class="fa fa-globe"></i></a>--><a href=""><img src="<?php echo site_url();?>/wp-content/themes/dhhc/gigapan1.svg"></a><a href=""><img src="<?php echo site_url();?>/wp-content/themes/dhhc/sketchfab1.svg"></a></div>
+
 
 <?php get_footer(); ?>

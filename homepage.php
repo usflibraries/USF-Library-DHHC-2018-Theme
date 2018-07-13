@@ -42,49 +42,30 @@ $id = get_the_ID();
             <!-- Bottom row, not visible on scroll -->
 
             <!--Carsouel-->
+<!--            
 <section >
   <div class="carousel carousel-slider data-indicators="true">
     <div class="carousel-fixed-item">
-      <div class="container">
-        <a class="btn waves-effect blue lighten-1 white-text" href="#" target="_blank">EXPLORE THIS</a>
-      </div>
+
     </div>
-    <div class="carousel-item colorbox white-text" href="#">
-      <div class="container">
-        <h3>Castillo de San Marco</h3>
-        <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur ex mi. Ut dapibus libero vitae eleifend pellentesque. Etiam bibendum tortor lectus, sit amet facilisis ligula vulputate et. Vivamus eget augue vel libero bibendum consectetur.
-                    Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum.</p>
-      </div>  
+    <?php $catquery = new WP_Query( 'cat=7&posts_per_page=4' ); ?>
+<?php while($catquery->have_posts()) : $catquery->the_post(); ?>
+ <div class="carousel-item colorbox white-text" href="#">
+
+<h3><?php the_title(); ?></h3>
+        <p class="white-text flow-text"><?php the_excerpt('my_excerpt_length');?></p>
+        <a href="<?php the_permalink()?>" class="btn">read more</a>
     </div>
-    <div class="carousel-item colorbox white-text" href="#">
-      <div class="container">
-        <h3>Castillo de San Marco</h3>
-        <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur ex mi. Ut dapibus libero vitae eleifend pellentesque. Etiam bibendum tortor lectus, sit amet facilisis ligula vulputate et. Vivamus eget augue vel libero bibendum consectetur.
-                    Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum.</p>
-      </div>  
-    </div>
-    <div class="carousel-item colorbox white-text" href="#">
-      <div class="container">
-        <h3>Castillo de San Marco</h3>
-        <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur ex mi. Ut dapibus libero vitae eleifend pellentesque. Etiam bibendum tortor lectus, sit amet facilisis ligula vulputate et. Vivamus eget augue vel libero bibendum consectetur.
-                    Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum.</p>
-      </div>  
-    </div>
-    <div class="carousel-item colorbox white-text" href="#">
-      <div class="container">
-        <h3>Castillo de San Marco</h3>
-        <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur ex mi. Ut dapibus libero vitae eleifend pellentesque. Etiam bibendum tortor lectus, sit amet facilisis ligula vulputate et. Vivamus eget augue vel libero bibendum consectetur.
-                    Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum.</p>
-      </div>  
-    </div>
+<?php endwhile;
+    wp_reset_postdata();
+?>
+
+    
 
   </div>
 </section>
+-->
             <!--Carsouel-End-->
-
-
-
-
 
 </div>
 
@@ -105,7 +86,8 @@ $id = get_the_ID();
             ?>
             <div class="center-align">
               <div class="row">
-                 <div class="col s6">
+                <!--historyContent-->
+                <div class="col s12 m12 l4">
             <h2><b>Preserving History</b></h2>
             <p class="flow-text valign">Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum. Quisque vel ex suscipit quam dignissim vestibulum. Nam aliquet varius nisi eu.sed varius lacus metus
                 at ipsum. Quisque vel ex suscipit quam dignissim vestibulum.
@@ -113,26 +95,99 @@ $id = get_the_ID();
             <a href="#" class="btn blue lighten-1">View Projects</a>
             <a href="#" class="btn blue lighten-1">Our Technology</a>
                  </div>
-        <div class="col s6">
-            <div class="wrapper">
-                <div class="column">
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                </div>
-                <div class="column">
-                    <div>1</div>
-                    <div>2</div>
-                </div>
-                <div class="column">
-                    <div>1</div>
-                </div>
-            </div>
+                <!--historyContent--> 
+                 <div class="col s12 m12 l1"></div>
+                 <!--flex-box-->
+        <div class="col s12 m12 l7">
+            <div class="row wrapper">
+  <div class="col s6 m4">
+    <div class="feature-grid-post">
+      <?php query_posts( array(
+                   'category_name' => 'latest-projects',
+                   'posts_per_page' => 3,
+                    )); ?>
+
+                    <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
+                    <a href="<?php the_permalink();?>">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
+                        <p class="title"><a href="<?php the_permalink() ?>">
+<?php
+$thetitle = $post->post_title; /* or you can use get_the_title() */
+$getlength = strlen($thetitle);
+$thelength = 35;
+echo substr($thetitle, 0, $thelength);
+if ($getlength > $thelength) echo "...";
+?>
+</a></p>
+                        
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+                        <?php else : ?>
+                        <?php endif; ?>
+    </div>
+  </div>
+  <div class="col s6 m4">
+    <div class="feature-grid-post-2">
+      <?php query_posts( array(
+                   'category_name' => 'field-notes',
+                   'posts_per_page' => 2,
+                    )); ?>
+
+                    <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
+                    <a href="<?php the_permalink();?>">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
+                        <p class="title"><a href="<?php the_permalink() ?>">
+<?php
+$thetitle = $post->post_title; /* or you can use get_the_title() */
+$getlength = strlen($thetitle);
+$thelength = 35;
+echo substr($thetitle, 0, $thelength);
+if ($getlength > $thelength) echo "...";
+?>
+</a></p>
+                        
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+                        <?php else : ?>
+                        <?php endif; ?>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="feature-grid-post-3">
+      <?php query_posts( array(
+                   'category_name' => 'software',
+                   'posts_per_page' => 1,
+                    )); ?>
+
+                    <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
+                    <a href="<?php the_permalink();?>">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
+                        <p class="title"><a href="<?php the_permalink() ?>">
+<?php
+$thetitle = $post->post_title; /* or you can use get_the_title() */
+$getlength = strlen($thetitle);
+$thelength = 35;
+echo substr($thetitle, 0, $thelength);
+if ($getlength > $thelength) echo "...";
+?>
+</a></p>
+                        
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+                        <?php else : ?>
+                        <?php endif; ?>
+    </div>
+  </div>
+</div>
         </div>
+        <!--flex-box-->
     </div>
 </div>
 
-            <p class="center-align">Copyright &copy; 2018. Digital Heritage and Humanities Collections, University of South Florida Libraries.</p>
+        
         </div><!-- /#post-<?php the_ID(); ?> -->
         
         <section class="alt">
