@@ -54,27 +54,36 @@
                 </div>
             </div><!-- /.mdl-layout__header-row (bottom) -->
         </header><!-- /#header -->
-    <section class="alt">
-<div class="container home-projects">
-<div class="row">
-<?php
-// The Query
-$the_query = new WP_Query( array( 'category_name' => 'latest-projects' ) );
-// The Loop
-if ( $the_query->have_posts() ) {
-  while ( $the_query->have_posts() ) {
-    $the_query->the_post();
-    echo '<div class="col s12 m6 l4"><a href="' . get_the_permalink() . '"><div class="project-box" style="background-image: url(' . get_the_post_thumbnail_url() . ')"><span class="project-box-title">' . get_the_title() . '<p>' . get_the_excerpt() . '</p></span></div><div class="project-box-subtitle">' . get_the_title() . '</div></a></div>';
-  }
-  /* Restore original Post Data */
-  wp_reset_postdata();
-} else {
-  // no posts found
-}
-?>
-</div></div>
+    <section class="s-content">
+        
+        <div class="row masonry-wrap">
+            <div class="masonry">
 
- </section>
+                <div class="grid-sizer"></div>
+
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        
+                    <div class="entry__thumb">
+                        <a href="single-standard.html" class="entry__thumb-link">
+                            <img src="images/thumbs/masonry/lamp-400.jpg" 
+                                    srcset="images/thumbs/masonry/lamp-400.jpg 1x, images/thumbs/masonry/lamp-800.jpg 2x" alt="">
+                        </a>
+                    </div>
     
-
-<?php get_footer(); ?>
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            
+                            <h1 class="entry__title"><a href="single-standard.html">Just a Standard Format Post.</a></h1>
+                            
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                            </p>
+                        </div>
+                    </div>
+    
+                </article>
+            </div>
+        </div>
+    </section>
