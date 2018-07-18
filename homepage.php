@@ -42,7 +42,7 @@ $id = get_the_ID();
             <!-- Bottom row, not visible on scroll -->
 
             <!--Carsouel-->
-<!--            
+           
 <section >
   <div class="carousel carousel-slider data-indicators="true">
     <div class="carousel-fixed-item">

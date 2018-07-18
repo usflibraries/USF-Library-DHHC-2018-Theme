@@ -54,36 +54,10 @@
                 </div>
             </div><!-- /.mdl-layout__header-row (bottom) -->
         </header><!-- /#header -->
-    <section class="s-content">
-        
-        <div class="row masonry-wrap">
-            <div class="masonry">
+        <div id="main" class="mdl-layout__content">
+        <div class="mdl-grid">
+            <?php the_content();?>
 
-                <div class="grid-sizer"></div>
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
-                    <div class="entry__thumb">
-                        <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/lamp-400.jpg" 
-                                    srcset="images/thumbs/masonry/lamp-400.jpg 1x, images/thumbs/masonry/lamp-800.jpg 2x" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <h1 class="entry__title"><a href="single-standard.html">Just a Standard Format Post.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                    </div>
-    
-                </article>
-            </div>
-        </div>
-    </section>
+        </div></div>
+</div>
+<?php get_footer(); ?>
