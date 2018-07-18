@@ -64,7 +64,7 @@ $id = get_the_ID();
 
   </div>
 </section>
--->
+
             <!--Carsouel-End-->
 
 </div>
@@ -76,7 +76,7 @@ $id = get_the_ID();
     <div class="mdl-grid">
         <?php the_post(); ?>
 
-        <div id="post-<?php the_ID(); ?>" class="container">
+        <div id="post-<?php the_ID(); ?>" >
 
             <?php
             the_content();
@@ -85,12 +85,12 @@ $id = get_the_ID();
             edit_post_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' );
             ?>
             <div class="center-align">
-              <div class="row">
+              <div class="row valign-wrapper">
                 <!--historyContent-->
                 <div class="col s12 m12 l4">
             <h2><b>Preserving History</b></h2>
-            <p class="flow-text valign">Nunc tempor vel leo in malesuada. Integer dictum, libero vitae ultricies euismod, odio diam porta sapien, sed varius lacus metus at ipsum. Quisque vel ex suscipit quam dignissim vestibulum. Nam aliquet varius nisi eu.sed varius lacus metus
-                at ipsum. Quisque vel ex suscipit quam dignissim vestibulum.
+            <p class="flow-text">
+             The USF Libraries Digital Heritage & Humanities Collections (DHHC) initiative documents heritage sites, landscapes, and objects, and creates digital learning tools and collections that promote sustainable heritage tourism and interpretation strategies through the use 3D and imaging technologies.
             </p>
             <a href="#" class="btn blue lighten-1">View Projects</a>
             <a href="#" class="btn blue lighten-1">Our Technology</a>
@@ -108,9 +108,9 @@ $id = get_the_ID();
                     )); ?>
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
-                    <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
-                        <p class="title"><a href="<?php the_permalink() ?>">
+                    <a href="<?php the_permalink();?>" style="display:block">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
 $getlength = strlen($thetitle);
@@ -118,7 +118,7 @@ $thelength = 35;
 echo substr($thetitle, 0, $thelength);
 if ($getlength > $thelength) echo "...";
 ?>
-</a></p>
+</p>
                         
                         </div>
                     </a>
@@ -136,8 +136,8 @@ if ($getlength > $thelength) echo "...";
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
-                        <p class="title"><a href="<?php the_permalink() ?>">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
 $getlength = strlen($thetitle);
@@ -145,7 +145,7 @@ $thelength = 35;
 echo substr($thetitle, 0, $thelength);
 if ($getlength > $thelength) echo "...";
 ?>
-</a></p>
+</p>
                         
                         </div>
                     </a>
@@ -163,8 +163,8 @@ if ($getlength > $thelength) echo "...";
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(); ?>');">
-                        <p class="title"><a href="<?php the_permalink() ?>">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
 $getlength = strlen($thetitle);
@@ -172,7 +172,7 @@ $thelength = 35;
 echo substr($thetitle, 0, $thelength);
 if ($getlength > $thelength) echo "...";
 ?>
-</a></p>
+</p>
                         
                         </div>
                     </a>

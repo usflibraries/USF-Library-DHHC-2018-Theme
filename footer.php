@@ -68,6 +68,7 @@
 <script>$(document).ready(function(){
     $('.materialboxed').materialbox();
   });
-</script>     
+</script>  
+<link rel='stylesheet' src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>   
 </body>
 </html>

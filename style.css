@@ -683,4 +683,12 @@ header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 .icon-space a {
 	flex-grow: 1;
 }
-
+.facstaff .collapsible {
+	border: 0;
+    box-shadow: none;
+}
+.facstaff img  {
+	border-radius:50%;
+	max-width:400px;
+	margin:auto;
+}
