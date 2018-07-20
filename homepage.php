@@ -73,7 +73,7 @@ $id = get_the_ID();
 </div>
 
 <div id="main" class="white">
-    <div class="mdl-grid">
+    <div class="mdl-grid welcome-section">
         <?php the_post(); ?>
 
         <div id="post-<?php the_ID(); ?>" >
@@ -85,20 +85,20 @@ $id = get_the_ID();
             edit_post_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' );
             ?>
             <div class="center-align">
-              <div class="row valign-wrapper">
+              <div class="row">
                 <!--historyContent-->
                 <div class="col s12 m12 l4">
-            <h2><b>Preserving History</b></h2>
+            <h2>Preserving History</h2>
             <p class="flow-text">
              The USF Libraries Digital Heritage & Humanities Collections (DHHC) initiative documents heritage sites, landscapes, and objects, and creates digital learning tools and collections that promote sustainable heritage tourism and interpretation strategies through the use 3D and imaging technologies.
             </p>
-            <a href="#" class="btn blue lighten-1">View Projects</a>
-            <a href="#" class="btn blue lighten-1">Our Technology</a>
+            <a href="#" class="btn usfbutton">View Projects</a>
+            <a href="#" class="btn usfbutton">Our Technology</a>
+ 
                  </div>
-                <!--historyContent--> 
-                 <div class="col s12 m12 l1"></div>
+                <!--historyContent-->
                  <!--flex-box-->
-        <div class="col s12 m12 l7">
+        <div class="col s12 m12 l8">
             <div class="row wrapper">
   <div class="col s6 m4">
     <div class="feature-grid-post">
@@ -109,7 +109,7 @@ $id = get_the_ID();
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>" style="display:block">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large'); ?>');">
                         <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
@@ -136,7 +136,7 @@ if ($getlength > $thelength) echo "...";
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large');?>');">
                         <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
@@ -163,7 +163,7 @@ if ($getlength > $thelength) echo "...";
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url(''); ?>');">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large'); ?>');">
                         <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */

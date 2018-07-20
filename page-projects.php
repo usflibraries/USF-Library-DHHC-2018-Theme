@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col m1 hide-on-small-only"></div>
                         <div class="col s12 m10">
-                            <h1 class="introtext text-white animate fadeInUp"><?php echo the_title();?>
+                           <h1 class="introtext text-white animate fadeInUp"><?php echo the_title();?>
                             </h1>
                         </div>
                         <div class="col m1 hide-on-small-only"></div>

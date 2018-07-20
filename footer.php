@@ -59,16 +59,20 @@
 	
 	</div><!-- /#wrapper -->
 <?php wp_footer(); ?>
-<ul class="side-nav usfteal" id="mobile-demo">
+<ul class="side-nav usfteal stroke" id="mobile-demo">
                       <li><a class="white-text" href="<?php echo site_url();?>/about-us">About Us</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/our-projects">Our Projects</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/technology">Technology</a></li>
-                      <li><a class="white-text" href="http://lib.usf.edu">Back to USF Libraries <i class="material-icons right">arrow_forward</i></a></li>
+                      <li><a class="white-text" href="http://lib.usf.edu">Back to USF Libraries</a></li>
                     </ul>
 <script>$(document).ready(function(){
     $('.materialboxed').materialbox();
   });
 </script>  
 <link rel='stylesheet' src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>   
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
