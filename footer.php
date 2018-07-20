@@ -10,7 +10,7 @@
   <a href="http://gigapan.com/profiles/USF_AIST"><img src="http://lib.usf.edu/wp-content/themes/dhhc/gigapan1.svg"></a>
   <a href="https://sketchfab.com/USF_digital"><img src="http://lib.usf.edu/wp-content/themes/dhhc/sketchfab1.svg"></a>
   </div>
-  <p class="center-align">Copyright &copy; 2018. Digital Heritage and Humanities Collections, University of South Florida Libraries.</p>
+  <p class="copyright center-align">Copyright &copy; 2018. Digital Heritage and Humanities Collections, University of South Florida Libraries.</p>
 </div>
 		<footer id="footer" class="mdl-mega-footer white">
 <div class="container">
