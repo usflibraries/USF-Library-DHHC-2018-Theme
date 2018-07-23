@@ -19,9 +19,9 @@
     
         <!-- Top row, always visible -->
 
-        <div class="mdl-layout__header-row z-depth-2 navbar-fixed">
+        <div class="mdl-layout__header-row navbar-fixed">
             
-            <nav class="mdl-navigation z-depth-0">
+            <nav class="mdl-navigation">
                     <div class="topleft_nav">
                         <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
                     </div>
@@ -54,7 +54,7 @@
             <div class="row center">
 <div class="col m1 hide-on-small-only"></div>
 <div class="col s12 m10">
-<div class="introtext text-white animate fadeInUp"><h1><?php echo the_title();?></h1></div>
+<div class="introtext text-white animate fadeInUp" data-aos="fade-up"><h1><?php echo the_title();?></h1></div>
 </div>
 <div class="col m1 hide-on-small-only"></div></div>
         </div>

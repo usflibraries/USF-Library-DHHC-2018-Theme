@@ -29,15 +29,27 @@
 	html {
 		font-size: 100%;
 	}
+
 	h1, h2, h3, h4, h5 {
 		font-family: 'oswald', sans-serif!important;
+	}
+	h4 i {
+    font-size: 31px;
+    line-height: 0;
+    vertical-align: middle;
+    color: gray;
+    margin-left: .6rem;
 	}
 	p, body {
 		line-height:1.5!important;
 		font-family: 'lato', sans-serif!important;
 	}
 	p {
-		font-size: 1.5rem!important;
+		line-height: 1.7!important;
+		max-width: 900px;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		font-size:1.3rem!important;
 	}
 	.alignnone {
 		/* margin: 5px 20px 20px 0; */
@@ -250,6 +262,15 @@
 	h2 {
 		font-size: 3rem;
 		font-weight:300!important;
+		max-width: 900px;
+		margin-left: auto!important;
+		/* padding-left: 8rem!important; */
+		margin-right: auto!important;
+	}
+	h3 {
+		max-width: 900px;
+		margin-left: auto!important;
+		margin-right: auto!important;
 	}
 
 	section {
@@ -386,7 +407,7 @@
 		margin: 0 0;
 	}
 
-	.topright_nav a {
+	.topright_nav span,.topright_nav a {
 		font-size:17px;
 		font-weight:700;
 		position: relative;
@@ -649,6 +670,13 @@
 		color: #ffffff;
 		font-weight: 500;
 	}
+	.feature-section {
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+	.feature-grid .col {
+    padding: 0 .25rem!important;
+	}
 
 	.feature-grid-post-2 {
 		background-size: cover;
@@ -694,20 +722,23 @@
 
 	.carousel.carousel-slider {
 		top: 0;
+		height: 70vh!important;
 		left: 0;
-		width: 30%;
-		margin-left: 20px;
 	}
 	.carousel.carousel-slider .carousel-item {
 		padding:.8rem 1.4rem;
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+
 	}
 	.carousel .indicators .indicator-item {
 		display: inline-block;
 		position: relative;
 		cursor: pointer;
 		height: 5px;
-		width: 20%;
-		margin: 24px 4px;
+		width: 9%;
+		margin: 10px 4px;
 		background-color: rgba(255,255,255,0.5);
 		-webkit-transition: background-color .3s;
 		transition: background-color .3s;
@@ -715,9 +746,11 @@
 	}
 	.colorbox{
 		background: #131313a6;
+		padding: .5rem 1.4rem 2rem;
+		margin:4rem 0;
 	}
 	.post-socials {
-		padding: 4rem 0 .8rem 0;
+		padding: 2rem 0 2rem 0;
 		margin: auto;
 		font-size: 4rem;
 		text-align: center;
@@ -730,8 +763,8 @@
 
 	.icon-space {
 		display: flex;
-		max-width: 35%;
-		padding:3rem 0;
+		max-width: 800px;
+		/* padding: 0% 0; */
 		margin: auto;
 	}
 	.icon-space a {
@@ -744,21 +777,30 @@
 	}
 	.facstaff img  {
 		border-radius:50%;
-		max-width:400px;
+		max-width:90%;
 		margin:auto;
+
+	}
+	.facstaff .collapsible-header i {
+    width: 1rem;
+    font-size: 1rem;
+    display: inline-block;
+    text-align: center;
+    margin-right: .5rem;
 	}
 	.facstaff .collapsible-header {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		cursor: pointer;
-		-webkit-tap-highlight-color: transparent;
-		line-height: 1.5;
-		padding: 1rem;
-		background-color: #fff;
-		border-bottom: none;
-		color: #038a79;
+		    /* display: -webkit-box; */
+    /* display: -webkit-flex; */
+    display: -ms-flexbox;
+    display: initial;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 0;
+    padding: 1rem;
+    /* text-align: center; */
+    background-color: #fff;
+    border-bottom: none;
+    color: #038a79;
 	}
 	.usfbutton{
 		background-color: #009374;
@@ -766,4 +808,21 @@
 	}
 	.usfbutton:hover{
 		background-color:lighten(#009374, 50%);
+	}
+	.carousel .indicators .indicator-item.active {
+		background-color: #DBE442;
+	}
+	.copyright {
+		font-size: 1rem;
+		font-style:italic;
+	}
+	.grid-items a {
+		color:#009374;
+	}
+	.container-fluid {
+	width: 95%;
+    margin: auto;
+	}
+	.collapsible-body {
+		border-bottom:0;
 	}
