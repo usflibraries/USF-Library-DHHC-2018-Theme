@@ -12,7 +12,7 @@
   </div>
   <p class="copyright center-align">Copyright &copy; 2018. Digital Heritage and Humanities Collections, University of South Florida Libraries.</p>
 </div>
-		<footer id="footer" class="mdl-mega-footer white">
+		<footer id="footer" class="white">
 <div class="container">
 <div class="row" id="sysfooter" style="padding: 20px 0 30px 0; ; line-height:2em;">
 

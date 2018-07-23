@@ -13,37 +13,32 @@
     $class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
     $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
-<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
-    
- <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100"> 
+
+ <header style="background-position:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
     
         <!-- Top row, always visible -->
 
         <div class="mdl-layout__header-row navbar-fixed">
-            
-            <nav class="mdl-navigation">
+                <nav class="mdl-navigation">
                     <div class="topleft_nav">
-                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="#" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
                     </div>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
-                    <?php
-                    /** Loading WordPress Custom Menu (theme_location) **/
-                    wp_nav_menu( array(
-                    'theme_location' => 'main-menu',
-                    'container'      => '',
-                    'items_wrap'     => '%3$s',
-                    'depth'          => 1,
+                        <?php
+                        /** Loading WordPress Custom Menu (theme_location) **/
+                        wp_nav_menu( array(
+                            'theme_location' => 'main-menu',
+                            'container'      => '',
+                            'items_wrap'     => '%3$s',
+                            'depth'          => 1,
                     //'fallback_cb'    => 'mdl_navwalker::fallback',
-                    'walker'         => new mdl_navwalker(),
-                    ) );
-                    ?>
+                            'walker'         => new mdl_navwalker(),
+                        ) );
+                        ?>
                     </div>
-            </nav>
-            <div class="mdl-layout-spacer"></div>
-                
-                
-
+                </nav>
             </div><!-- /.mdl-layout__header-row (top) -->
 
             <!-- Bottom row, not visible on scroll -->
@@ -59,8 +54,8 @@
 <div class="col m1 hide-on-small-only"></div></div>
         </div>
             </div><!-- /.mdl-layout__header-row (bottom) -->
-
-    </header><!-- /#header -->
+</header>
+    <!-- /#header -->
 
     <div id="main" class="content">
 
