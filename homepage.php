@@ -45,10 +45,10 @@ $id = get_the_ID();
            
 <section >
   <div class="carousel carousel-slider data-indicators="true">
-    <div class="carousel-fixed-item">
+    <div class="carousel-fixed-item">s
 
     </div>
-    <?php $catquery = new WP_Query( 'cat=7&posts_per_page=4' ); ?>
+    <?php $catquery = new WP_Query( 'cat=6&posts_per_page=4' ); ?>
 <?php while($catquery->have_posts()) : $catquery->the_post(); ?>
  <div class="carousel-item colorbox white-text" href="#">
 

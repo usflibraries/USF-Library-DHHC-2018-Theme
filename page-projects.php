@@ -14,7 +14,7 @@
     $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
-    <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+    <header style="background-image:url('<?php the_post_thumbnail_url();?>'); background-size:cover" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
             <!-- Top row, always visible -->
             <div class="mdl-layout__header-row z-depth-2 navbar-fixed">
                 <nav class="mdl-navigation z-depth-0">
