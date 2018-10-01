@@ -15,14 +15,14 @@
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100"> 
 
- <header style="background-position:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+ <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
     
         <!-- Top row, always visible -->
 
         <div class="mdl-layout__header-row navbar-fixed">
                 <nav class="mdl-navigation">
                     <div class="topleft_nav">
-                        <a href="#" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="http://localhost/wordpress/dhhc/" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png"></a>
                     </div>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -37,6 +37,10 @@
                             'walker'         => new mdl_navwalker(),
                         ) );
                         ?>
+                    </div>
+                    <div class="topright_nav right">
+                        <a href="https://lib.usf.edu" class="left">
+                        <i class="material-icons left">create</i> USF Library</a>
                     </div>
                 </nav>
             </div><!-- /.mdl-layout__header-row (top) -->
