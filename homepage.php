@@ -19,7 +19,8 @@ $id = get_the_ID();
             <div class="mdl-layout__header-row navbar-fixed">
                 <nav class="mdl-navigation">
                     <div class="topleft_nav">
-                        <a href="#" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="http://localhost/wordpress/dhhc/" class="brand-logo">
+                            <img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png"></a>
                     </div>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -84,7 +85,7 @@ $id = get_the_ID();
     <div class="mdl-grid welcome-section">
         <?php the_post(); ?>
 
-        <div id="post-<?php the_ID(); ?>" >
+        <div id="post-<?php the_ID(); ?>" class="container" >
 
             <?php
             the_content();
@@ -92,7 +93,7 @@ $id = get_the_ID();
             wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'dhhc' ) . '&after=</div>');
             edit_post_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' );
             ?>
-            <div class="center-align">
+            <div>
               <div class="row feature-section">
                 <!--historyContent-->
                 <div class="col s12 m12 l4">
@@ -204,9 +205,11 @@ if ($getlength > $thelength) echo "...";
                 <p class="center-align">Who We Are & What We Do</p>
                 <div class="row">
                     <div class="center-align">
-                 <iframe src="https://player.vimeo.com/video/261709083" width="640" height="660" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                      <h3 class="white-text">Welcome</h3>
+<p>The Digital Heritage & Humanities Collections (DHHC) is a center of research in the USF Libraries that serves to document heritage sites, landscapes and objects, and to create digital learning tools and collections that promote sustainable heritage tourism and interpretation strategies through the use 3D and imaging technologies. Explore some of our Online Collections: sketchfab.com/USF_digital.
 
+Our Digital Media Commons (DMC) area, the public face of the DHHC, is located in the Tampa Campus Main Library and serves students and faculty with the latest in digital technologies including hardware and software applications available for loan or on-site use to the USF Community. Check out our website for the DMC at lib.usf.edu/dmc/.</p>
+                    </div>
                 </div>
             </div>
             <div class="center" width=100%"><a class="btn-large center usfbutton" href="our-projects/">Meet The Team</a></div>

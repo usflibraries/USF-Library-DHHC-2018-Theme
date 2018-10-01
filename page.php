@@ -13,9 +13,15 @@
     $class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
     $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
+<<<<<<< HEAD
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
     
  <header style="background-image:url('<?php the_post_thumbnail_url();?>'); background-size:cover" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100"> 
+
+ <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
     
         <!-- Top row, always visible -->
 
@@ -23,7 +29,11 @@
             
             <nav class="mdl-navigation z-depth-0">
                     <div class="topleft_nav">
+<<<<<<< HEAD
                         <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+=======
+                        <a href="http://localhost/wordpress/dhhc/" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png"></a>
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
                     </div>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -39,11 +49,19 @@
                     ) );
                     ?>
                     </div>
+<<<<<<< HEAD
             </nav>
             <div class="mdl-layout-spacer"></div>
                 
                 
 
+=======
+                    <div class="topright_nav right">
+                        <a href="https://lib.usf.edu" class="left">
+                        <i class="material-icons left">create</i> USF Library</a>
+                    </div>
+                </nav>
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
             </div><!-- /.mdl-layout__header-row (top) -->
 
             <!-- Bottom row, not visible on scroll -->
