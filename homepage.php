@@ -14,10 +14,10 @@ $id = get_the_ID();
     $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
     ?>
     <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
-        <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+        <header style="" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
             <!-- Top row, always visible -->
-            <div class="mdl-layout__header-row z-depth-2 navbar-fixed">
-                <nav class="mdl-navigation z-depth-0">
+            <div class="mdl-layout__header-row navbar-fixed">
+                <nav class="mdl-navigation">
                     <div class="topleft_nav">
                         <a href="#" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
                     </div>
@@ -36,12 +36,12 @@ $id = get_the_ID();
                         ?>
                     </div>
                 </nav>
-                <div class="mdl-layout-spacer"></div>
             </div><!-- /.mdl-layout__header-row (top) -->
             
             <!-- Bottom row, not visible on scroll -->
 
             <!--Carsouel-->
+<<<<<<< HEAD
            
 <section >
   <div class="carousel carousel-slider data-indicators="true">
@@ -49,27 +49,35 @@ $id = get_the_ID();
 
     </div>
     <?php $catquery = new WP_Query( 'cat=6&posts_per_page=4' ); ?>
+=======
+     </header>      
+    <div class="carousel carousel-slider">
+        <?php $catquery = new WP_Query( 'cat=7&posts_per_page=4' ); ?>
+>>>>>>> a71c00e673bdee6955ef7ecab8152f7f4bd31c2c
 <?php while($catquery->have_posts()) : $catquery->the_post(); ?>
- <div class="carousel-item colorbox white-text" href="#">
-
-<h3><?php the_title(); ?></h3>
-        <p class="white-text flow-text"><?php the_excerpt('my_excerpt_length');?></p>
-        <a href="<?php the_permalink()?>" class="btn">read more</a>
+    <div class="carousel-item" style="background-image: url('<?php the_post_thumbnail_url('large')?>">
+        <div class="row">
+            <div class="col s12 m7 l6">
+                <div class="colorbox white-text z-depth-4">
+                <h3><?php the_title();?></h3>
+                <p class="white-text flow-text"><?php the_excerpt('my_excerpt_length');?></p>
+                <a href="<?php the_permalink()?>" class="btn">read more</a>
+            </div>
+        </div>
+    </div>
     </div>
 <?php endwhile;
     wp_reset_postdata();
 ?>
+    </div>
 
-    
 
-  </div>
-</section>
 
             <!--Carsouel-End-->
 
 </div>
 
-</header><!-- /#header -->
+<!-- /#header -->
 </div>
 
 <div id="main" class="white">
@@ -85,7 +93,7 @@ $id = get_the_ID();
             edit_post_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' );
             ?>
             <div class="center-align">
-              <div class="row">
+              <div class="row feature-section">
                 <!--historyContent-->
                 <div class="col s12 m12 l4">
             <h2>Preserving History</h2>
@@ -99,7 +107,7 @@ $id = get_the_ID();
                 <!--historyContent-->
                  <!--flex-box-->
         <div class="col s12 m12 l8">
-            <div class="row wrapper">
+            <div class="row wrapper feature-grid">
   <div class="col s6 m4">
     <div class="feature-grid-post">
       <?php query_posts( array(
@@ -201,7 +209,7 @@ if ($getlength > $thelength) echo "...";
 
                 </div>
             </div>
-            <div class="center" width=100%"><a class="btn-large center usfteal blue lighten-1" href="our-projects/">Meet The Team</a></div>
+            <div class="center" width=100%"><a class="btn-large center usfbutton" href="our-projects/">Meet The Team</a></div>
         </section>
 
 
