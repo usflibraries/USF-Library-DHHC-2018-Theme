@@ -15,7 +15,7 @@
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
     
- <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+ <header id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
     
         <!-- Top row, always visible -->
 
@@ -23,7 +23,7 @@
             
             <nav class="mdl-navigation z-depth-0">
                     <div class="topleft_nav">
-                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/10/DHHC_PyramidandLetters_White_1000vpx.png"></a>
                     </div>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -47,10 +47,10 @@
             </div><!-- /.mdl-layout__header-row (top) -->
 
             <!-- Bottom row, not visible on scroll -->
-            <div class="mdl-layout__header-row mdl-layout__header-row--bottom">
+            <div class="mdl-layout__header-row mdl-layout__header-row--bottom" style="background-image:url('<?php the_post_thumbnail_url();?>')" >
 
                 <!-- Navigation -->
-        <div class="container">
+        <div class="container semi-bg">
             <div class="row center">
 <div class="col m1 hide-on-small-only"></div>
 <div class="col s12 m10">

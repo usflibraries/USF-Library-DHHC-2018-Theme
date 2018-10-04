@@ -238,6 +238,19 @@ $theme_version = '1.0';
 			'after_title' => '</h3>',
 		) );
 	}
+	function create_post_type() {
+  		register_post_type( 'team_member',
+    	array(
+      	'labels' => array(
+        'name' => __( 'Team Members' ),
+        'singular_name' => __( 'Team Member' )
+      	),
+      'public' => true,
+      'has_archive' => true,
+    	)
+  	);
+	}
+add_action( 'init', 'create_post_type' );
 	add_action( 'widgets_init', 'dhhc_widgets_init' );
 
 	$preset_widgets = array(
