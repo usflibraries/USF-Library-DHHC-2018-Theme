@@ -23,7 +23,7 @@
             
             <nav class="mdl-navigation z-depth-0">
                 <div class="topleft_nav">
-          <a href="#" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+          <a href="http://localhost/wordpress/dhhc/"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
                 </div>
 <div class="topright_nav">
                 <?php

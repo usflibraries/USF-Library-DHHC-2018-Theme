@@ -7,7 +7,15 @@
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
     
+<<<<<<< HEAD
      <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url('large');?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+<<<<<<< HEAD
+    <header style="background-image:url('<?php the_post_thumbnail_url();?>'); background-size:cover" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+     <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
     
         <!-- Top row, always visible -->
 
@@ -15,7 +23,9 @@
             
             <nav class="mdl-navigation z-depth-0">
                     <div class="topleft_nav">
-                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="http://localhost/wordpress/dhhc/" class="brand-logo">
+                            <img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png">
+                        </a>
                     </div>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">

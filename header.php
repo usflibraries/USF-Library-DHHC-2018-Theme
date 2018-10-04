@@ -37,7 +37,7 @@ $(document).ready(function(){
     dist: 0,
     padding: 0,
     fullWidth: true,
-    indicators: false,
+    indicators: true,
     duration: 100,
   }
   );

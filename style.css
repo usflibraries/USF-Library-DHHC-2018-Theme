@@ -307,7 +307,7 @@
 		/* width:200px; */
 		/* height:170px; */
 	}
-	.brand-logo img {/* width:100%; *//* height:auto; */height: 50px;top: 0;margin-left: 1rem;margin-right: 1rem;}
+	.brand-logo img {/* width:100%; *//* height:auto; */height: 70px;top: 0;margin-left: 1rem;margin-right: 1rem;}
 	.nav-wrapper, nav {
 		margin: 0;
 		background: none;
@@ -505,10 +505,13 @@
 	}
 	nav .brand-logo {position:inherit!important;top: 0;}
 	nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
-		line-height: 60px!important;
+		line-height: 30px!important;
 	}
 	nav a {
 		color:white!important;
+	}
+	.container {
+		max-width: 1500px!important;
 	}
 	.project-box {
 		background: #333;
@@ -748,11 +751,19 @@
 		border-radius: 0%;
 	}
 	.colorbox{
+<<<<<<< HEAD
 		background: #131313a6;
 		padding: .5rem 1.4rem 2rem;
 		position: fixed;
     	bottom: 2rem;
     	max-width:800px;
+=======
+    background: #131313a6;
+    padding: .5rem 1.4rem 2rem;
+    position: fixed;
+    bottom: 2rem;
+    max-width: 800px;
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
 	}
 	.post-socials {
 		padding: 2rem 0 2rem 0;
