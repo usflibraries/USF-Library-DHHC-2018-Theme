@@ -7,7 +7,7 @@
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
     
-     <header style="background-position:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+     <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url('large');?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
     
         <!-- Top row, always visible -->
 
@@ -44,7 +44,7 @@
                 <!-- Navigation -->
         <div class="container">
 
-<div class="introtext text-white animate fadeInUp"><h1><?php echo the_title();?></h1></div>
+<div class="introtext text-white" data-aos="fade-up"><h1><?php echo the_title();?></h1></div>
 
             </div><!-- /.mdl-layout__header-row (bottom) -->
 

@@ -63,7 +63,7 @@
                       <li><a class="white-text" href="<?php echo site_url();?>/about-us">About Us</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/our-projects">Our Projects</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/technology">Technology</a></li>
-                      <li><a class="white-text" href="http://lib.usf.edu">Back to USF Libraries</a></li>
+                      <li><a class="white-text border-top" href="https://lib.usf.edu">USF Libraries</a></li>
                     </ul>
 <script>$(document).ready(function(){
     $('.materialboxed').materialbox();
