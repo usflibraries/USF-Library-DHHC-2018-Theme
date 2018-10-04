@@ -14,12 +14,23 @@
     $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
-    <header style="background-image:url('<?php the_post_thumbnail_url();?>')" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+<<<<<<< HEAD
+    
+<header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url('large');?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+    
+        <!-- Top row, always visible -->
+
+        <div class="mdl-layout__header-row navbar-fixed">
+            
+            <nav class="mdl-navigation">
+=======
+    <header style="background-image:url('<?php the_post_thumbnail_url();?>'); background-size:cover" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
             <!-- Top row, always visible -->
             <div class="mdl-layout__header-row z-depth-2 navbar-fixed">
                 <nav class="mdl-navigation z-depth-0">
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
                     <div class="topleft_nav">
-                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png"></a>
                     </div>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -46,7 +57,7 @@
                     <div class="row">
                         <div class="col m1 hide-on-small-only"></div>
                         <div class="col s12 m10">
-                            <h1 class="introtext text-white animate fadeInUp"><?php echo the_title();?>
+                           <h1 class="introtext text-white animate fadeInUp"><?php echo the_title();?>
                             </h1>
                         </div>
                         <div class="col m1 hide-on-small-only"></div>
@@ -54,29 +65,10 @@
                 </div>
             </div><!-- /.mdl-layout__header-row (bottom) -->
         </header><!-- /#header -->
-    <section class="alt">
-<div class="container home-projects">
-<div class="row">
-<?php
-// The Query
-$the_query = new WP_Query( array( 'category_name' => 'latest-projects' ) );
-// The Loop
-if ( $the_query->have_posts() ) {
-  while ( $the_query->have_posts() ) {
-    $the_query->the_post();
-    echo '<div class="col s12 m6 l4"><a href="' . get_the_permalink() . '"><div class="project-box" style="background-image: url(' . get_the_post_thumbnail_url() . ')"><span class="project-box-title">' . get_the_title() . '<p>' . get_the_excerpt() . '</p></span></div><div class="project-box-subtitle">' . get_the_title() . '</div></a></div>';
-  }
-  /* Restore original Post Data */
-  wp_reset_postdata();
-} else {
-  // no posts found
-}
-?>
-</div></div>
-<!--socials-->
-<div class="post-socials"><a href="https://www.facebook.com/3DResearchers"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/3D_Researchers"><i class="fa fa-twitter"></i></a><a href="https://www.flickr.com/photos/aist/albums"><i class="fa fa-flickr"></i></a><a href="https://vimeo.com/user30365775"><i class="fa fa-vimeo"></i></a><!--<a href=""><i class="fa fa-globe"></i></a>--><a href="http://gigapan.com/profiles/USF_AIST"><img src="<?php echo site_url();?>/wp-content/themes/dhhc/gigapan1.svg"></a><a href="https://sketchfab.com/USF_digital"><img src="<?php echo site_url();?>/wp-content/themes/dhhc/sketchfab1.svg"></a></div>
-<!--end socials-->
- </section>
-    
+        <div id="main" class="mdl-layout__content">
+        <div class="mdl-grid">
+            <?php the_content();?>
 
+        </div></div>
+</div>
 <?php get_footer(); ?>

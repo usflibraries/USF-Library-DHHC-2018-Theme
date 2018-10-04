@@ -1,7 +1,11 @@
 	/*!
 	Theme Name: DHHC v1.1
 	Theme URI: http://lib.usf.edu/dhhc
+<<<<<<< HEAD
 	Author: USF Libraries Web Team - Trevor Collinson
+=======
+	Author: USF Libraries Web Team
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	Author URI: http://lib.usf.edu/dhhc
 	Description: Upgraded Theme for the University of South Florida Libraries DHHC Group
 	Version: 1.1
@@ -90,6 +94,7 @@
 		margin-left: auto;
 		margin-right: auto
 	}
+<<<<<<< HEAD
 	.mt-10 {
 		margin-top:10rem;
 	}
@@ -102,6 +107,9 @@
 	.mb-3 {
 		margin-bottom:3rem;
 	} 
+=======
+
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	.wp-caption {
 		max-width: 96%; /* Image does not overflow the content area */
 		padding: 5px 3px 10px;
@@ -273,15 +281,27 @@
 	h2 {
 		font-size: 3rem;
 		font-weight:300!important;
+<<<<<<< HEAD
+=======
+		max-width: 900px;
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 		margin-left: auto!important;
 		/* padding-left: 8rem!important; */
 		margin-right: auto!important;
 	}
 	h3 {
+<<<<<<< HEAD
+=======
+		max-width: 900px;
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 		margin-left: auto!important;
 		margin-right: auto!important;
 	}
 	h4 {
+<<<<<<< HEAD
+=======
+		max-width: 900px;
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 		margin-left: auto!important;
 		margin-right: auto!important;
 	}
@@ -315,7 +335,11 @@
 		/* width:200px; */
 		/* height:170px; */
 	}
+<<<<<<< HEAD
 	.brand-logo img {/* width:100%; *//* height:auto; */height: 50px;top: 0;margin-left: 1rem;margin-right: 1rem;}
+=======
+	.brand-logo img {/* width:100%; *//* height:auto; */height: 70px;top: 0;margin-left: 1rem;margin-right: 1rem;}
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	.nav-wrapper, nav {
 		margin: 0;
 		background: none;
@@ -391,6 +415,7 @@
 	}
 	.mdl-layout__header {
 		background-color:transparent!important;
+<<<<<<< HEAD
 		/* background-size:cover; */
 		/* background-position:center; */
 		/* background-attachment:fixed; */
@@ -398,6 +423,15 @@
 	}
 	header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
 	#header .mdl-layout__header-row.mdl-layout__header-row--bottom {height:40vh;z-index: 1;background-color: rgba(0, 0, 0, 0.31);background-position: center;background-size: cover;}
+=======
+		background-size:cover;
+		background-position:center;
+		background-attachment:fixed;
+		max-height:3000px!important;
+	}
+	header .mdl-layout__header-row {padding:0!important;z-index:99;height: 80px;}
+	#header .mdl-layout__header-row.mdl-layout__header-row--bottom {height:40vh;z-index: 1;background-color: rgba(0, 0, 0, 0.31);}
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	.videobg {
 		position: absolute;
 		left: 0;
@@ -512,10 +546,17 @@
 	}
 	nav .brand-logo {position:inherit!important;top: 0;}
 	nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+<<<<<<< HEAD
 		line-height: 60px!important;
+=======
+		line-height: 30px!important;
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	}
 	nav a {
 		color:white!important;
+	}
+	.container {
+		max-width: 1500px!important;
 	}
 	.project-box {
 		background: #333;
@@ -611,6 +652,7 @@
 	.home-projects p {
 		color: white;
 	}
+<<<<<<< HEAD
 	.home-projects img {
 		margin-bottom:1rem;
 	}
@@ -625,6 +667,8 @@
 		border:0;
 		border-top:1px solid #9bcb3c;
 	}
+=======
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	@media (max-width: 992px){
 		.project-box-title {
 			display:none;
@@ -769,11 +813,25 @@
 		border-radius: 0%;
 	}
 	.colorbox{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 		background: #131313a6;
 		padding: .5rem 1.4rem 2rem;
 		position: fixed;
     	bottom: 2rem;
     	max-width:800px;
+<<<<<<< HEAD
+=======
+=======
+    background: #131313a6;
+    padding: .5rem 1.4rem 2rem;
+    position: fixed;
+    bottom: 2rem;
+    max-width: 800px;
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	}
 	.post-socials {
 		padding: 2rem 0 2rem 0;
@@ -828,6 +886,7 @@
     border-bottom: none;
     color: #038a79;
 	}
+<<<<<<< HEAD
 	.staffgrid {
 		text-align: center;
 	}
@@ -841,6 +900,8 @@
 		margin-bottom:1rem;
 		font-size:1.2rem;
 	}
+=======
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
 	.usfbutton{
 		background-color: #009374;
 

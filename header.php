@@ -14,9 +14,8 @@
   <!-- Smooth Scrolling -->
   <script src="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/js/smoothscroll.js"></script>
 <link rel='stylesheet' href="<?php echo site_url();?>/wp-content/themes/USF-Library-DHHC-2018-Theme/css/font-awesome.min.css"/>
-
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel='stylesheet' src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 <?php wp_head(); ?>
 </head>
 

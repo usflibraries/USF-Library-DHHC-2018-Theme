@@ -1,6 +1,18 @@
 		</div><!-- /.mdl-grid -->
-
-		<footer id="footer" class="mdl-mega-footer white">
+<div class="post-socials">
+  <div><h2 class="center-align"><b>DHHC Online</b></h2></div>
+  <div class="icon-space">
+  <a href="https://www.facebook.com/3DResearchers"><i class="fa fa-facebook"></i></a>
+  <a href="https://twitter.com/3D_Researchers"><i class="fa fa-twitter"></i></a>
+  <a href="https://www.flickr.com/photos/aist/albums"><i class="fa fa-flickr"></i></a>
+  <a href="https://vimeo.com/user30365775"><i class="fa fa-vimeo"></i></a>
+  <a href=""><i class="fa fa-globe"></i></a>
+  <a href="http://gigapan.com/profiles/USF_AIST"><img src="http://lib.usf.edu/wp-content/themes/dhhc/gigapan1.svg"></a>
+  <a href="https://sketchfab.com/USF_digital"><img src="http://lib.usf.edu/wp-content/themes/dhhc/sketchfab1.svg"></a>
+  </div>
+  <p class="copyright center-align">Copyright &copy; 2018. Digital Heritage and Humanities Collections, University of South Florida Libraries.</p>
+</div>
+		<footer id="footer" class="white">
 <div class="container">
 <div class="row" id="sysfooter" style="padding: 20px 0 30px 0; ; line-height:2em;">
 
@@ -47,15 +59,20 @@
 	
 	</div><!-- /#wrapper -->
 <?php wp_footer(); ?>
-<ul class="side-nav usfteal" id="mobile-demo">
+<ul class="side-nav usfteal stroke" id="mobile-demo">
                       <li><a class="white-text" href="<?php echo site_url();?>/about-us">About Us</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/our-projects">Our Projects</a></li>
                       <li><a class="white-text" href="<?php echo site_url();?>/technology">Technology</a></li>
-                      <li><a class="white-text" href="http://lib.usf.edu">Back to USF Libraries <i class="material-icons right">arrow_forward</i></a></li>
+                      <li><a class="white-text border-top" href="https://lib.usf.edu">USF Libraries</a></li>
                     </ul>
 <script>$(document).ready(function(){
     $('.materialboxed').materialbox();
   });
-</script>     
+</script>  
+<link rel='stylesheet' src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>   
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

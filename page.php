@@ -5,17 +5,31 @@
  *
  */
 
-    get_header();
+get_header();
 
-    $id = get_the_ID();
+$id = get_the_ID();
 
-    // Add class via custom field (optional)
-    $class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
-    $style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
+// Add class via custom field (optional)
+$class = sanitize_text_field( get_post_meta( $id, '_class', true ) );// get custom meta-value
+$style = sanitize_text_field( get_post_meta( $id, '_style', true ) );// get custom meta-value
 ?>
+<<<<<<< HEAD
 <div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
     
+<<<<<<< HEAD
  <header id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+ <header style="background-image:url('<?php the_post_thumbnail_url();?>'); background-size:cover" id="header" class="mdl-layout__header mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100"> 
+
+<<<<<<< HEAD
+<header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url('large');?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+=======
+ <header style="background-size:cover;background-image:url('<?php the_post_thumbnail_url();?>'); background-position: center;" id="header" class="mdl-layout__header--<?php echo $navbar_position; ?><?php if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
     
         <!-- Top row, always visible -->
 
@@ -23,7 +37,19 @@
             
             <nav class="mdl-navigation z-depth-0">
                     <div class="topleft_nav">
+<<<<<<< HEAD
                         <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/10/DHHC_PyramidandLetters_White_1000vpx.png"></a>
+=======
+<<<<<<< HEAD
+                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+=======
+<<<<<<< HEAD
+                        <a href="<?php echo site_url();?>" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2017/12/USF-Libraries-and-DHHC-250x50.png"></a>
+=======
+                        <a href="http://localhost/wordpress/dhhc/" class="brand-logo"><img src="http://www.lib.usf.edu/dhhc/wp-content/uploads/sites/24/2018/09/logo.png"></a>
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
+>>>>>>> e5928e631e60daf142fdcfc1b42d8729c625745a
+>>>>>>> b6561b33d02f2eb54ae4a31f21eb2d8548f8e6b2
                     </div>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <div class="topright_nav hide-on-med-and-down">
@@ -39,11 +65,19 @@
                     ) );
                     ?>
                     </div>
+<<<<<<< HEAD
             </nav>
             <div class="mdl-layout-spacer"></div>
                 
                 
 
+=======
+                    <div class="topright_nav right">
+                        <a href="https://lib.usf.edu" class="left">
+                        <i class="material-icons left">create</i> USF Library</a>
+                    </div>
+                </nav>
+>>>>>>> a9b4904f8ae86fa53d80818c26cd146b0afe812c
             </div><!-- /.mdl-layout__header-row (top) -->
 
             <!-- Bottom row, not visible on scroll -->
@@ -62,7 +96,7 @@
 
     </header><!-- /#header -->
 
-    <div id="main" class="mdl-layout__content">
+    <div id="main" class="content">
 
         <div class="mdl-grid">
         <?php the_post(); ?>
@@ -74,7 +108,7 @@
 
                 wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'dhhc' ) . '&after=</div>');
                 edit_post_link( __( 'Edit', 'dhhc' ), '<span class="edit-link">', '</span>' );
-            ?></section><div class="post-socials"><a href="https://www.facebook.com/3DResearchers"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/3D_Researchers"><i class="fa fa-twitter"></i></a><a href="https://www.flickr.com/photos/aist/albums"><i class="fa fa-flickr"></i></a><a href="https://vimeo.com/user30365775"><i class="fa fa-vimeo"></i></a><!--<a href=""><i class="fa fa-globe"></i></a>--><a href="http://gigapan.com/profiles/USF_AIST"><img src="<?php echo site_url();?>/wp-content/themes/dhhc/gigapan1.svg"></a><a href="https://sketchfab.com/USF_digital"><img src="<?php echo site_url();?>/wp-content/themes/dhhc/sketchfab1.svg"></a></div>
+            ?></section>
         </div><!-- /#post-<?php the_ID(); ?> -->
 
 

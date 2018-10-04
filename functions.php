@@ -539,4 +539,6 @@ add_action( 'init', 'create_post_type' );
 	}
 	add_action( 'wp_footer', 'dhhc_add_ie_html5_shims', 1 );
 
+	function my_excerpt_length($length) {return 38;}
+	add_filter('excerpt_length', 'my_excerpt_length');
 ?>
