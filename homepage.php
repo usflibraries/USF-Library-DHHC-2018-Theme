@@ -38,23 +38,16 @@ $id = get_the_ID();
                     </div>
                 </nav>
             </div><!-- /.mdl-layout__header-row (top) -->
-            
+            </header>   
             <!-- Bottom row, not visible on scroll -->
 
             <!--Carsouel-->
-<<<<<<< HEAD
-           
-<section >
-  <div class="carousel carousel-slider data-indicators="true">
-    <div class="carousel-fixed-item">s
 
-    </div>
+  <div class="carousel carousel-slider data-indicators="true">
     <?php $catquery = new WP_Query( 'cat=6&posts_per_page=4' ); ?>
-=======
-     </header>      
+        
     <div class="carousel carousel-slider">
         <?php $catquery = new WP_Query( 'cat=7&posts_per_page=4' ); ?>
->>>>>>> a71c00e673bdee6955ef7ecab8152f7f4bd31c2c
 <?php while($catquery->have_posts()) : $catquery->the_post(); ?>
     <div class="carousel-item" style="background-image: url('<?php the_post_thumbnail_url('large')?>">
         <div class="row">
@@ -78,6 +71,7 @@ $id = get_the_ID();
 
 </div>
 
+
 <!-- /#header -->
 </div>
 
@@ -85,7 +79,7 @@ $id = get_the_ID();
     <div class="mdl-grid welcome-section">
         <?php the_post(); ?>
 
-        <div id="post-<?php the_ID(); ?>" class="container" >
+        <div id="post-<?php the_ID(); ?>" class="container-fluid" >
 
             <?php
             the_content();
@@ -109,34 +103,8 @@ $id = get_the_ID();
                  <!--flex-box-->
         <div class="col s12 m12 l8">
             <div class="row wrapper feature-grid">
-  <div class="col s6 m4">
-    <div class="feature-grid-post">
-      <?php query_posts( array(
-                   'category_name' => 'latest-projects',
-                   'posts_per_page' => 3,
-                    )); ?>
 
-                    <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
-                    <a href="<?php the_permalink();?>" style="display:block">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large'); ?>');">
-                        <p class="title">
-<?php
-$thetitle = $post->post_title; /* or you can use get_the_title() */
-$getlength = strlen($thetitle);
-$thelength = 35;
-echo substr($thetitle, 0, $thelength);
-if ($getlength > $thelength) echo "...";
-?>
-</p>
-                        
-                        </div>
-                    </a>
-                <?php endwhile; ?>
-                        <?php else : ?>
-                        <?php endif; ?>
-    </div>
-  </div>
-  <div class="col s6 m4">
+  <div class="col s6">
     <div class="feature-grid-post-2">
       <?php query_posts( array(
                    'category_name' => 'field-notes',
@@ -163,16 +131,17 @@ if ($getlength > $thelength) echo "...";
                         <?php endif; ?>
     </div>
   </div>
-  <div class="col s12 m4">
-    <div class="feature-grid-post-3">
+  <div class="col s6">
+    <div class="feature-grid-post-2">
       <?php query_posts( array(
-                   'category_name' => 'software',
-                   'posts_per_page' => 1,
+                   'category_name' => 'uncategorized',
+                   'posts_per_page' => 2,
+                   'offset' => 3,
                     )); ?>
 
                     <?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
                     <a href="<?php the_permalink();?>">
-                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large'); ?>');">
+                        <div class="feature-grid-post" style="background-image:url('<?php the_post_thumbnail_url('medium_large');?>');">
                         <p class="title">
 <?php
 $thetitle = $post->post_title; /* or you can use get_the_title() */
@@ -190,6 +159,7 @@ if ($getlength > $thelength) echo "...";
                         <?php endif; ?>
     </div>
   </div>
+
 </div>
         </div>
         <!--flex-box-->
@@ -204,13 +174,10 @@ if ($getlength > $thelength) echo "...";
                 <h2 class="center-align"><b>Digital Humanities and Heritage Collection</b></h2>
                 <p class="center-align">Who We Are & What We Do</p>
                 <div class="row">
-                    <div class="center-align">
-                      <h3 class="white-text">Welcome</h3>
 <p>The Digital Heritage & Humanities Collections (DHHC) is a center of research in the USF Libraries that serves to document heritage sites, landscapes and objects, and to create digital learning tools and collections that promote sustainable heritage tourism and interpretation strategies through the use 3D and imaging technologies. Explore some of our Online Collections: sketchfab.com/USF_digital.
 
 Our Digital Media Commons (DMC) area, the public face of the DHHC, is located in the Tampa Campus Main Library and serves students and faculty with the latest in digital technologies including hardware and software applications available for loan or on-site use to the USF Community. Check out our website for the DMC at lib.usf.edu/dmc/.</p>
                     </div>
-                </div>
             </div>
             <div class="center" width=100%"><a class="btn-large center usfbutton" href="our-projects/">Meet The Team</a></div>
         </section>
